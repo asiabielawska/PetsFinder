@@ -1,7 +1,11 @@
-import "./App.css";
+import { BottomMainMenuBar } from "./components/BottomMainMenuBar/BottomMainMenuBar";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <BottomMainMenuBar />
+    </>
+  );
 }
 
 export default App;
