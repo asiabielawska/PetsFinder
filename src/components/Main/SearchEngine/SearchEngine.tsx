@@ -8,9 +8,7 @@ export const SearchEngine = () => {
   return (
     <div
       style={{
-        paddingTop: 15,
-        display: "flex",
-        justifyContent: "center",
+        paddingTop: 25,
       }}
     >
       <Paper
@@ -19,7 +17,6 @@ export const SearchEngine = () => {
           p: "2px 4px",
           display: "flex",
           alignItems: "center",
-          width: "90%",
           borderRadius: 10,
           border: "1px solid #917B60",
           boxShadow: "none",
@@ -29,7 +26,7 @@ export const SearchEngine = () => {
           <TuneIcon />
         </IconButton>
         <InputBase
-          sx={{ ml: 1, flex: 1 }}
+          sx={{ ml: 1, flex: 1, color: "#5E503F" }}
           placeholder="Wyszukaj"
           inputProps={{ "aria-label": "Wyszukaj" }}
         />

@@ -2,9 +2,8 @@ import { styled } from "@mui/material";
 
 export const PhotoAndName = styled("div")({
   display: "flex",
-  paddingTop: "3vh",
-  paddingLeft: "4vw",
   alignItems: "center",
+  flex: 2,
 });
 export const UserImage = styled("div")({
   width: 50,
