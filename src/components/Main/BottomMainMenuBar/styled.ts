@@ -2,11 +2,11 @@ import { styled } from "@mui/material";
 
 export const BottomMenuBar = styled("div")({
   display: "flex",
-  position: "absolute",
+  position: "fixed",
   bottom: 0,
-  left: 0,
-  right: 0,
+  width: "100%",
   height: "10vh",
+  marginTop: "auto",
   "& > button": {
     backgroundColor: "#917B60",
     borderLeft: "none",

@@ -4,6 +4,7 @@ export const MainContent = styled("div")({
   paddingTop: "3vh",
   paddingLeft: "5vw",
   paddingRight: "5vw",
+  paddingBottom: "10vh",
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
@@ -13,41 +14,9 @@ export const Heading = styled("div")({
   marginTop: 20,
   color: "#5E503F",
   fontWeight: 900,
-  fontSize: 13,
+  fontSize: 15,
 });
 
-export const CommonCategories = styled("div")({
+export const UserAndAddButton = styled("div")({
   display: "flex",
-  flexDirection: "row",
-  paddingTop: 15,
-  width: "100%",
-  justifyContent: "space-between",
-});
-
-export const Category = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  color: "#5E503F",
-  fontSize: 13,
-  alignItems: "center",
-  fontWeight: "bold",
-});
-
-export const CategoryButton = styled("button")({
-  border: "none",
-  backgroundColor: "#D6C3AE",
-  height: 40,
-  width: 40,
-  borderRadius: 10,
-  color: "white",
-});
-
-export const LostFindButtons = styled("button")({
-  border: "none",
-  backgroundColor: "#D6C3AE",
-  height: 30,
-  width: "auto",
-  borderRadius: 5,
-  color: "white",
-  marginRight: 5,
 });

@@ -1,58 +1,25 @@
 import { AddNewAnimalButton } from "./components/Main/AddNewAnimalButton/AddNewAnimalButton";
 import { BottomMainMenuBar } from "./components/Main/BottomMainMenuBar/BottomMainMenuBar";
+import { MainCommonCategories } from "./components/Main/CommonCategories/MainCommonCategories";
+import { LatestAnnouncements } from "./components/Main/LatestAnnouncements/LatestAnnouncements";
 import { PhotoAndUserName } from "./components/Main/PhotoAndUserName/PhotoAndUserName";
 import { SearchEngine } from "./components/Main/SearchEngine/SearchEngine";
-import PetsIcon from "@mui/icons-material/Pets";
-import BlockIcon from "@mui/icons-material/Block";
-import {
-  Category,
-  CategoryButton,
-  CommonCategories,
-  Heading,
-  LostFindButtons,
-  MainContent,
-} from "./styled";
+
+import { Heading, MainContent, UserAndAddButton } from "./styled";
 
 function App() {
   return (
     <>
       <MainContent>
-        <div style={{ display: "flex" }}>
+        <UserAndAddButton>
           <PhotoAndUserName />
           <AddNewAnimalButton />
-        </div>
+        </UserAndAddButton>
         <SearchEngine />
         <Heading>Najczęstsze kategorie</Heading>
-        <CommonCategories>
-          <Category>
-            <CategoryButton>
-              <PetsIcon />
-            </CategoryButton>
-            <div>Kotki</div>
-          </Category>
-          <Category>
-            <CategoryButton>
-              <PetsIcon />
-            </CategoryButton>
-            <div>Pieski</div>
-          </Category>
-          <Category>
-            <CategoryButton>
-              <PetsIcon />
-            </CategoryButton>
-            <div>Inne</div>
-          </Category>
-          <Category>
-            <CategoryButton>
-              <BlockIcon fontSize="medium" />
-            </CategoryButton>
-          </Category>
-        </CommonCategories>
-        <div style={{ paddingTop: 10 }}>
-          <LostFindButtons>Zgubione</LostFindButtons>
-          <LostFindButtons>Znalezione</LostFindButtons>
-        </div>
+        <MainCommonCategories />
         <Heading>Najnowsze ogłoszenia</Heading>
+        <LatestAnnouncements />
       </MainContent>
 
       <BottomMainMenuBar />
