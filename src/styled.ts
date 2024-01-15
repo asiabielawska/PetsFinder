@@ -4,7 +4,7 @@ export const MainContent = styled("div")({
   paddingTop: "3vh",
   paddingLeft: "5vw",
   paddingRight: "5vw",
-  paddingBottom: "10vh",
+  paddingBottom: "12vh",
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
