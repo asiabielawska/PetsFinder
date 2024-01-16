@@ -7,16 +7,7 @@ export const BottomMenuBar = styled("div")({
   width: "100%",
   height: "10vh",
   marginTop: "auto",
-  "& > button": {
-    backgroundColor: "#917B60",
-    borderLeft: "none",
-    borderTop: "none",
-    borderBottom: "none",
-    borderRight: "1px solid white",
-  },
-  "& > button:last-child": {
-    borderRight: "none",
-  },
+  backgroundColor: "white",
 });
 
 export const Option = styled("button")({
@@ -28,4 +19,6 @@ export const Option = styled("button")({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+  backgroundColor: "#917B60",
+  border: "none",
 });

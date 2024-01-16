@@ -4,6 +4,7 @@ export const PhotoAndName = styled("div")({
   display: "flex",
   alignItems: "center",
   flex: 2,
+  marginTop: 15,
 });
 export const UserImage = styled("div")({
   width: 50,

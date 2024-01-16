@@ -1,7 +1,6 @@
 import { styled } from "@mui/material";
 
 export const MainContent = styled("div")({
-  paddingTop: "3vh",
   paddingLeft: "5vw",
   paddingRight: "5vw",
   paddingBottom: "12vh",
