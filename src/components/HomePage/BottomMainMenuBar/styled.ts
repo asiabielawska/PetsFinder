@@ -7,7 +7,7 @@ export const BottomMenuBar = styled("div")({
   width: "100%",
   height: "10vh",
   marginTop: "auto",
-  backgroundColor: "white",
+  backgroundColor: "#917B60",
 });
 
 export const Option = styled("button")({
