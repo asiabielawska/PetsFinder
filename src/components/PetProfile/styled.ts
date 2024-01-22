@@ -6,7 +6,7 @@ export const ReturnButton = styled("button")({
   borderRadius: 10,
   position: "absolute",
   top: 10,
-  left: 5,
+  left: 10,
 });
 
 export const Liked = styled("button")({
@@ -14,7 +14,7 @@ export const Liked = styled("button")({
   border: "none",
   position: "absolute",
   top: 10,
-  right: 5,
+  right: 10,
 });
 
 export const PetProfileImg = styled("img")({
@@ -73,17 +73,20 @@ export const Contact = styled("div")({
   background: "white",
 });
 
-export const PhoneAndMessage = styled("button")({
+export const Message = styled("button")({
   background: "none",
-  border: "none",
+  border: "1px solid #917B60",
+  height: 40,
+  width: 130,
   color: "#917B60",
+  borderRadius: 20,
 });
 
 export const Adopt = styled("button")({
   backgroundColor: "#917B60",
   border: "1px solid #917B60",
   height: 40,
-  width: 110,
+  width: 130,
   borderRadius: 20,
   color: "white",
 });

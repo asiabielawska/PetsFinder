@@ -10,7 +10,7 @@ import {
   Liked,
   PetDetails,
   PetProfileImg,
-  PhoneAndMessage,
+  Message,
   ReturnButton,
 } from "./styled";
 import {
@@ -68,9 +68,9 @@ export const PetProfile = () => {
         </Description>
       </MainContent>
       <Contact>
-        <PhoneAndMessage>
+        <Message>
           <SmsIcon />
-        </PhoneAndMessage>
+        </Message>
         <Adopt>Przygarnij</Adopt>
       </Contact>
     </>

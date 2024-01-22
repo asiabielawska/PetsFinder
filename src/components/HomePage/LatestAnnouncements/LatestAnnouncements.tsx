@@ -8,11 +8,11 @@ export const LatestAnnouncements = () => {
     <>
       <Announcement onClick={() => navigate("pet-profile")}>
         <AnnouncementImg src={koteczek} />
-        <AnnouncementText>Treść</AnnouncementText>
+        <AnnouncementText></AnnouncementText>
       </Announcement>
       <Announcement onClick={() => navigate("pet-profile")}>
         <AnnouncementImg src={koteczek} />
-        <AnnouncementText>Treść</AnnouncementText>
+        <AnnouncementText></AnnouncementText>
       </Announcement>
     </>
   );
