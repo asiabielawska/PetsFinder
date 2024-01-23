@@ -6,11 +6,11 @@ export const LatestAnnouncements = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Announcement onClick={() => navigate("pet-profile")}>
+      <Announcement onClick={() => navigate("/pet-profile")}>
         <AnnouncementImg src={koteczek} />
         <AnnouncementText></AnnouncementText>
       </Announcement>
-      <Announcement onClick={() => navigate("pet-profile")}>
+      <Announcement onClick={() => navigate("/pet-profile")}>
         <AnnouncementImg src={koteczek} />
         <AnnouncementText></AnnouncementText>
       </Announcement>

@@ -9,6 +9,12 @@ import { PhotoAndUserName } from "../HomePage/PhotoAndUserName/PhotoAndUserName"
 import { Heading, MainContent } from "../../styled";
 import { BottomMainMenuBar } from "../HomePage/BottomMainMenuBar/BottomMainMenuBar";
 
+const mockPets = [
+  { petImg: koteczek, petText: "treść", id: 1 },
+  { petImg: koteczek, petText: "treść", id: 2 },
+  { petImg: koteczek, petText: "treść", id: 3 },
+];
+
 export const UserProfile = () => {
   const navigate = useNavigate();
   return (
@@ -16,18 +22,12 @@ export const UserProfile = () => {
       <MainContent>
         <PhotoAndUserName />
         <Heading>Ostatnio dodane</Heading>
-        <Announcement onClick={() => navigate("pet-profile")}>
-          <AnnouncementImg src={koteczek} />
-          <AnnouncementText></AnnouncementText>
-        </Announcement>
-        <Announcement onClick={() => navigate("pet-profile")}>
-          <AnnouncementImg src={koteczek} />
-          <AnnouncementText></AnnouncementText>
-        </Announcement>
-        <Announcement onClick={() => navigate("pet-profile")}>
-          <AnnouncementImg src={koteczek} />
-          <AnnouncementText></AnnouncementText>
-        </Announcement>
+        {mockPets.map(({ petImg, petText, id }) => (
+          <Announcement onClick={() => navigate("/pet-profile")} key={id}>
+            <AnnouncementImg src={petImg} />
+            <AnnouncementText>{petText}</AnnouncementText>
+          </Announcement>
+        ))}
       </MainContent>
       <BottomMainMenuBar />
     </>
