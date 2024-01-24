@@ -1,5 +1,10 @@
 import { Heading, MainContent } from "../../styled";
-import { FormTextField } from "./styled";
+import {
+  BrownBackgroundButton,
+  FormTextField,
+  TwoButtons,
+  WhiteBackgroundButton,
+} from "./styled";
 
 const mockForm = [
   { id: "miejscowosc", label: "Miejscowość*" },
@@ -18,6 +23,12 @@ const mockForm = [
     multiline: true,
     rows: 4,
   },
+  {
+    id: "zdjęcie",
+    label: "Dodaj zdjęcie",
+    multiline: true,
+    rows: 4,
+  },
 ];
 
 export const Form = () => {
@@ -25,6 +36,12 @@ export const Form = () => {
     <>
       <MainContent>
         <Heading>Dane</Heading>
+        <TwoButtons>
+          <WhiteBackgroundButton>Zgubiono</WhiteBackgroundButton>
+          <WhiteBackgroundButton>Znaleziono</WhiteBackgroundButton>
+          <WhiteBackgroundButton>Oddam</WhiteBackgroundButton>
+          <WhiteBackgroundButton>Szukam</WhiteBackgroundButton>
+        </TwoButtons>
         {mockForm.map(({ id, label, multiline, rows }) => (
           <FormTextField
             key={id}
@@ -35,6 +52,10 @@ export const Form = () => {
             rows={rows}
           />
         ))}
+        <TwoButtons>
+          <WhiteBackgroundButton>Cofnij</WhiteBackgroundButton>
+          <BrownBackgroundButton>Dodaj ogłoszenie</BrownBackgroundButton>
+        </TwoButtons>
       </MainContent>
     </>
   );

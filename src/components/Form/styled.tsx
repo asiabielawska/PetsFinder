@@ -26,3 +26,31 @@ export const FormTextField = styled(TextField)({
     borderRadius: 30,
   },
 });
+
+export const TwoButtons = styled("div")({
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+  marginTop: 15,
+  width: "100%",
+  height: "10vh",
+  background: "white",
+});
+
+export const WhiteBackgroundButton = styled("button")({
+  background: "none",
+  border: "1px solid #917B60",
+  height: 40,
+  width: 130,
+  color: "#917B60",
+  borderRadius: 20,
+});
+
+export const BrownBackgroundButton = styled("button")({
+  backgroundColor: "#917B60",
+  border: "1px solid #917B60",
+  height: 40,
+  width: 130,
+  borderRadius: 20,
+  color: "white",
+});
