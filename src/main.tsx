@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { PetProfile } from "./components/PetProfile/PetProfile.tsx";
 import { UserProfile } from "./components/UserProfile/UserProfile.tsx";
+import { Form } from "./components/Form/Form.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   },
   { path: "pet-profile", element: <PetProfile /> },
   { path: "user-profile", element: <UserProfile /> },
+  { path: "form", element: <Form /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
