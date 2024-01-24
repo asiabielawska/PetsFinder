@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Heading, MainContent } from "../../styled";
 import {
   BrownBackgroundButton,
@@ -32,6 +33,7 @@ const mockForm = [
 ];
 
 export const Form = () => {
+  const navigate = useNavigate();
   return (
     <>
       <MainContent>
@@ -53,7 +55,9 @@ export const Form = () => {
           />
         ))}
         <TwoButtons>
-          <WhiteBackgroundButton>Cofnij</WhiteBackgroundButton>
+          <WhiteBackgroundButton onClick={() => navigate("/")}>
+            Cofnij
+          </WhiteBackgroundButton>
           <BrownBackgroundButton>Dodaj ogłoszenie</BrownBackgroundButton>
         </TwoButtons>
       </MainContent>
