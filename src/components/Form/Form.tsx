@@ -1,14 +1,23 @@
-import { TextField } from "@mui/material";
 import { Heading, MainContent } from "../../styled";
+import { FormTextField } from "./styled";
 
 const mockForm = [
   { id: "miejscowosc", label: "Miejscowość*" },
   { id: "data", label: "Data*" },
-  { id: "gatunek-zwierzecia", label: "Gatunek zwierzęcia*" },
+  {
+    id: "gatunek-zwierzecia",
+    label: "Gatunek zwierzęcia*",
+  },
   { id: "wiek", label: "Wiek" },
   { id: "plec", label: "Płeć" },
   { id: "kolor", label: "Kolor" },
   { id: "rasa", label: "Rasa" },
+  {
+    id: "opis",
+    label: "Krótki opis zwierzęcia/sytuacji",
+    multiline: true,
+    rows: 4,
+  },
 ];
 
 export const Form = () => {
@@ -16,23 +25,16 @@ export const Form = () => {
     <>
       <MainContent>
         <Heading>Dane</Heading>
-        {mockForm.map(({ id, label }) => (
-          <TextField
+        {mockForm.map(({ id, label, multiline, rows }) => (
+          <FormTextField
+            key={id}
             id={id}
             label={label}
             variant="outlined"
-            sx={{ color: "#917B60" }}
-            style={{ marginTop: 15, borderRadius: "inherit" }}
+            multiline={multiline}
+            rows={rows}
           />
         ))}
-        <TextField
-          id="Opis"
-          label="Krótki opis"
-          multiline
-          rows={4}
-          variant="outlined"
-          style={{ marginTop: 15 }}
-        />
       </MainContent>
     </>
   );
