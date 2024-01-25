@@ -6,7 +6,7 @@ export const BasicDatePicker = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        label="Data"
+        label="Data*"
         format="DD-MM-YYYY"
         slotProps={{
           popper: {

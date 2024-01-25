@@ -7,6 +7,7 @@ import {
   WhiteBackgroundButton,
 } from "./styled";
 import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
+import { BasicSelect } from "./TypeOfReport/BasicSelect";
 
 const mockForm = [
   { id: "miejscowosc", label: "Miejscowość*" },
@@ -38,12 +39,7 @@ export const Form = () => {
     <>
       <MainContent>
         <Heading>Dane</Heading>
-        <TwoButtons>
-          <WhiteBackgroundButton>Zgubiono</WhiteBackgroundButton>
-          <WhiteBackgroundButton>Znaleziono</WhiteBackgroundButton>
-          <WhiteBackgroundButton>Oddam</WhiteBackgroundButton>
-          <WhiteBackgroundButton>Szukam</WhiteBackgroundButton>
-        </TwoButtons>
+        <BasicSelect />
         <BasicDatePicker />
         {mockForm.map(({ id, label, multiline, rows }) => (
           <FormTextField
