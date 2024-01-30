@@ -17,7 +17,7 @@ export const FormTextField = styled(TextField)({
     },
   },
   "& .MuiInputBase-input": {
-    color: "#917B60",
+    color: "#917B60 ",
   },
   "& label.MuiFormLabel-root": {
     color: "#917B60",

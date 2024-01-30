@@ -7,16 +7,13 @@ import {
   WhiteBackgroundButton,
 } from "./styled";
 import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
-import { BasicSelect } from "./TypeOfReport/BasicSelect";
+import { TypeOfReportSelect } from "./TypeOfReport/TypeOfReportSelect";
+import { AnimalSelect } from "./AnimalSelect/AnimalSelect";
+import { GenderSelect } from "./GenderSelect/GenderSelect";
 
 const mockForm = [
   { id: "miejscowosc", label: "Miejscowość*" },
-  {
-    id: "gatunek-zwierzecia",
-    label: "Gatunek zwierzęcia*",
-  },
   { id: "wiek", label: "Wiek" },
-  { id: "plec", label: "Płeć" },
   { id: "kolor", label: "Kolor" },
   { id: "rasa", label: "Rasa" },
   {
@@ -39,8 +36,10 @@ export const Form = () => {
     <>
       <MainContent>
         <Heading>Dane</Heading>
-        <BasicSelect />
+        <TypeOfReportSelect />
+        <AnimalSelect />
         <BasicDatePicker />
+        <GenderSelect />
         {mockForm.map(({ id, label, multiline, rows }) => (
           <FormTextField
             key={id}
@@ -51,6 +50,7 @@ export const Form = () => {
             rows={rows}
           />
         ))}
+
         <TwoButtons>
           <WhiteBackgroundButton onClick={() => navigate("/")}>
             Cofnij
