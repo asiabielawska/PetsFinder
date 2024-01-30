@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Heading, MainContent } from "../../styled";
 import {
+  AddImg,
   BrownBackgroundButton,
   FormTextField,
   TwoButtons,
@@ -10,6 +11,7 @@ import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
 import { TypeOfReportSelect } from "./TypeOfReport/TypeOfReportSelect";
 import { AnimalSelect } from "./AnimalSelect/AnimalSelect";
 import { GenderSelect } from "./GenderSelect/GenderSelect";
+import { useRef, useState } from "react";
 
 const mockForm = [
   { id: "miejscowosc", label: "Miejscowość*" },
@@ -22,16 +24,12 @@ const mockForm = [
     multiline: true,
     rows: 4,
   },
-  {
-    id: "zdjęcie",
-    label: "Dodaj zdjęcie",
-    multiline: true,
-    rows: 4,
-  },
 ];
 
 export const Form = () => {
   const navigate = useNavigate();
+  const [image, setImage] = useState<string | null>();
+  const ref = useRef<HTMLInputElement | null>(null);
   return (
     <>
       <MainContent>
@@ -50,6 +48,27 @@ export const Form = () => {
             rows={rows}
           />
         ))}
+        <input
+          ref={ref}
+          type="file"
+          style={{ display: "none" }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              setImage(reader.result as string);
+            };
+            reader.readAsDataURL(e.target.files![0]!);
+          }}
+        />
+        <AddImg
+          onClick={() => {
+            console.log("click");
+            ref.current?.click();
+          }}
+        >
+          Dodaj zdjęcie
+        </AddImg>
+        {image && <img src={image} />}
 
         <TwoButtons>
           <WhiteBackgroundButton onClick={() => navigate("/")}>

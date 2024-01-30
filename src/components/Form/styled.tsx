@@ -29,7 +29,7 @@ export const FormTextField = styled(TextField)({
 
 export const TwoButtons = styled("div")({
   display: "flex",
-  justifyContent: "space-around",
+  justifyContent: "space-between",
   alignItems: "center",
   marginTop: 15,
   width: "100%",
@@ -53,4 +53,14 @@ export const BrownBackgroundButton = styled("button")({
   width: 130,
   borderRadius: 20,
   color: "white",
+});
+
+export const AddImg = styled("button")({
+  marginTop: 15,
+  backgroundColor: "#D6C3AE",
+  border: "1px solid #917B60",
+  height: 40,
+  width: "100%",
+  color: "black",
+  borderRadius: 20,
 });

@@ -20,13 +20,8 @@ export const BasicSelect = ({ selectValue, selectLabel }: Props) => {
   return (
     <Box sx={{ minWidth: 120 }}>
       <SelectFormControl fullWidth>
-        <InputLabel id={selectLabel}>{selectLabel}</InputLabel>
-        <Select
-          labelId={selectLabel}
-          value={value}
-          label={selectLabel}
-          onChange={handleChange}
-        >
+        <InputLabel>{selectLabel}</InputLabel>
+        <Select value={value} label={selectLabel} onChange={handleChange}>
           {selectValue.map((el) => (
             <MenuItem value={el} key={el}>
               {el}
