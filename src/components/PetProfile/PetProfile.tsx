@@ -38,7 +38,7 @@ export const PetProfile = () => {
       <MainContent>
         <PetDetails>
           <Category>
-            <div>Gatunek</div>
+            <div>Zwierzę</div>
             <Detail>Kot</Detail>
           </Category>
           <Category>

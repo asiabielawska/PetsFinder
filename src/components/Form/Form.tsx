@@ -13,12 +13,12 @@ import { BasicSelect } from "../../components/BasicSelect/BasicSelect";
 import dayjs from "dayjs";
 
 const mockForm = [
-  { id: "miejscowosc", label: "Miejscowość*" },
-  { id: "wiek", label: "Wiek" },
-  { id: "kolor", label: "Kolor" },
-  { id: "rasa", label: "Rasa" },
+  { id: "city", label: "Miejscowość*" },
+  { id: "age", label: "Wiek" },
+  { id: "color", label: "Kolor" },
+  { id: "race", label: "Rasa" },
   {
-    id: "opis",
+    id: "content",
     label: "Krótki opis zwierzęcia/sytuacji",
     multiline: true,
     rows: 4,
@@ -60,16 +60,16 @@ export const Form = () => {
       <MainContent style={{ paddingBottom: 5 }}>
         <Heading>Dane</Heading>
         <BasicSelect
-          selectLabel={"Typ zgłoszenia*"}
-          selectValue={["Zgubiono", "Znaleziono", "Oddam", "Szukam"]}
+          label={"Typ zgłoszenia*"}
+          options={["Zgubiono", "Znaleziono", "Oddam", "Szukam"]}
           value={newAnnouncement.type}
           onChange={(newValue: string) => {
             setNewAnnouncement((prev) => ({ ...prev, type: newValue }));
           }}
         />
         <BasicSelect
-          selectLabel={"Zwierzę*"}
-          selectValue={["Piesek", "Kotek", "Ptak", "Inne"]}
+          label={"Zwierzę*"}
+          options={["Piesek", "Kotek", "Ptak", "Inne"]}
           value={newAnnouncement.animal}
           onChange={(newValue: string) => {
             setNewAnnouncement((prev) => ({ ...prev, animal: newValue }));
@@ -77,8 +77,8 @@ export const Form = () => {
         />
         <BasicDatePicker value={newAnnouncement.date} />
         <BasicSelect
-          selectLabel={"Płeć"}
-          selectValue={["Ona", "On", "Nie wiem"]}
+          label={"Płeć"}
+          options={["Ona", "On", "Nie wiem"]}
           value={newAnnouncement.gender}
           onChange={(newValue: string) => {
             setNewAnnouncement((prev) => ({ ...prev, gender: newValue }));
@@ -92,6 +92,11 @@ export const Form = () => {
             variant="outlined"
             multiline={multiline}
             rows={rows}
+            value={newAnnouncement[id as keyof MockAnnouncement]}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              const newValue = event.target.value as string;
+              setNewAnnouncement((prev) => ({ ...prev, [id]: newValue }));
+            }}
           />
         ))}
         <input
