@@ -8,6 +8,21 @@ import { Heading, MainContent } from "../../styled";
 import { BottomMainMenuBar } from "../HomePage/BottomMainMenuBar/BottomMainMenuBar";
 import { Content, Message, NameAndContent } from "./styled";
 
+const mockMessages = [
+  {
+    userName: "Nazwa uzytkownika1",
+    content: "Jestem zainteresowana przygarnięciem kotka",
+  },
+  {
+    userName: "Nazwa uzytkownika2",
+    content: "Proszę o informację ile kotek ma lat",
+  },
+  {
+    userName: "Nazwa uzytkownika3",
+    content: "Jestem zainteresowana przygarnięciem pieska",
+  },
+];
+
 export const Messages = () => {
   const navigate = useNavigate();
   return (
@@ -20,27 +35,15 @@ export const Messages = () => {
           </UserName>
         </PhotoAndName>
         <Heading>Wiadomości</Heading>
-        <Message>
-          <UserImage></UserImage>
-          <NameAndContent>
-            <UserName>Nazwa uytkownika</UserName>
-            <Content>Jestem zainteresowana przygarnięciem kotka</Content>
-          </NameAndContent>
-        </Message>
-        <Message>
-          <UserImage></UserImage>
-          <NameAndContent>
-            <UserName>Nazwa uytkownika</UserName>
-            <Content>Jestem zainteresowana przygarnięciem kotka</Content>
-          </NameAndContent>
-        </Message>
-        <Message>
-          <UserImage></UserImage>
-          <NameAndContent>
-            <UserName>Nazwa uytkownika</UserName>
-            <Content>Jestem zainteresowana przygarnięciem kotka</Content>
-          </NameAndContent>
-        </Message>
+        {mockMessages.map(({ userName, content }) => (
+          <Message key={userName}>
+            <UserImage></UserImage>
+            <NameAndContent>
+              <UserName>{userName}</UserName>
+              <Content>{content}</Content>
+            </NameAndContent>
+          </Message>
+        ))}
       </MainContent>
       <BottomMainMenuBar />
     </>

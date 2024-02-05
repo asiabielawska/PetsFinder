@@ -7,7 +7,7 @@ export const AddNewAnimalButton = () => {
     <>
       <button
         style={{ border: "none", background: "none" }}
-        onClick={() => navigate("form")}
+        onClick={() => navigate("/form")}
       >
         <AddIcon fontSize="large" />
       </button>
