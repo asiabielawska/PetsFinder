@@ -21,12 +21,12 @@ export const BottomMainMenuBar = () => {
           Wiadomości
         </Option>
         <DividerComponent />
-        <Option>
+        <Option onClick={() => navigate("/liked")}>
           <FavoriteIcon fontSize="large" />
           Polubienia
         </Option>
         <DividerComponent />
-        <Option onClick={() => navigate("user-profile")}>
+        <Option onClick={() => navigate("/user-profile")}>
           <AccountCircleIcon fontSize="large" />
           Profil
         </Option>
