@@ -6,6 +6,7 @@ import {
 } from "../HomePage/PhotoAndUserName/styled";
 import { Heading, MainContent } from "../../styled";
 import { BottomMainMenuBar } from "../HomePage/BottomMainMenuBar/BottomMainMenuBar";
+import { Content, Message, NameAndContent } from "./styled";
 
 export const Messages = () => {
   const navigate = useNavigate();
@@ -19,6 +20,27 @@ export const Messages = () => {
           </UserName>
         </PhotoAndName>
         <Heading>Wiadomości</Heading>
+        <Message>
+          <UserImage></UserImage>
+          <NameAndContent>
+            <UserName>Nazwa uytkownika</UserName>
+            <Content>Jestem zainteresowana przygarnięciem kotka</Content>
+          </NameAndContent>
+        </Message>
+        <Message>
+          <UserImage></UserImage>
+          <NameAndContent>
+            <UserName>Nazwa uytkownika</UserName>
+            <Content>Jestem zainteresowana przygarnięciem kotka</Content>
+          </NameAndContent>
+        </Message>
+        <Message>
+          <UserImage></UserImage>
+          <NameAndContent>
+            <UserName>Nazwa uytkownika</UserName>
+            <Content>Jestem zainteresowana przygarnięciem kotka</Content>
+          </NameAndContent>
+        </Message>
       </MainContent>
       <BottomMainMenuBar />
     </>
