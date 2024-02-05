@@ -21,7 +21,6 @@ export const HomePage = () => {
         <Heading>Najnowsze ogłoszenia</Heading>
         <LatestAnnouncements />
       </MainContent>
-
       <BottomMainMenuBar />
     </>
   );

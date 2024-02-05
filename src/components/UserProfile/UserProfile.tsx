@@ -9,11 +9,7 @@ import { PhotoAndUserName } from "../HomePage/PhotoAndUserName/PhotoAndUserName"
 import { Heading, MainContent } from "../../styled";
 import { BottomMainMenuBar } from "../HomePage/BottomMainMenuBar/BottomMainMenuBar";
 
-const mockPets = [
-  { petImg: koteczek, petText: "treść", id: 1 },
-  { petImg: koteczek, petText: "treść", id: 2 },
-  { petImg: koteczek, petText: "treść", id: 3 },
-];
+const mockPets = [{ petImg: koteczek, petText: "treść", id: 1 }];
 
 export const UserProfile = () => {
   const navigate = useNavigate();

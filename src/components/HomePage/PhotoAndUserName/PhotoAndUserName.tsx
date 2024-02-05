@@ -6,8 +6,8 @@ export const PhotoAndUserName = () => {
   return (
     <>
       <PhotoAndName>
-        <UserImage onClick={() => navigate("user-profile")}></UserImage>
-        <UserName onClick={() => navigate("user-profile")}>
+        <UserImage onClick={() => navigate("/user-profile")}></UserImage>
+        <UserName onClick={() => navigate("/user-profile")}>
           Nazwa uzytkownika
         </UserName>
       </PhotoAndName>

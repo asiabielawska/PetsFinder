@@ -3,7 +3,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import EmailIcon from "@mui/icons-material/Email";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { DividerComponent } from "../Divider";
+import { DividerComponent } from "./Divider";
 import { useNavigate } from "react-router-dom";
 
 export const BottomMainMenuBar = () => {
@@ -16,7 +16,7 @@ export const BottomMainMenuBar = () => {
           Strona główna
         </Option>
         <DividerComponent />
-        <Option>
+        <Option onClick={() => navigate("/messages")}>
           <EmailIcon fontSize="large" />
           Wiadomości
         </Option>
