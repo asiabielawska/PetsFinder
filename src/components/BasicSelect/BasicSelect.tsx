@@ -1,20 +1,24 @@
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useState } from "react";
 import { SelectFormControl } from "./styled";
 import { MenuItem } from "@mui/material";
 
 type Props = {
   selectLabel: string;
   selectValue: string[];
+  value: string;
+  onChange: (el: string) => void;
 };
 
-export const BasicSelect = ({ selectValue, selectLabel }: Props) => {
-  const [value, setValue] = useState("");
-
+export const BasicSelect = ({
+  selectValue,
+  selectLabel,
+  value,
+  onChange,
+}: Props) => {
   const handleChange = (event: SelectChangeEvent) => {
-    setValue(event.target.value as string);
+    onChange(event.target.value as string);
   };
 
   return (

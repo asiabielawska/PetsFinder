@@ -1,11 +1,17 @@
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "./styled";
+import dayjs from "dayjs";
 
-export const BasicDatePicker = () => {
+type Props = {
+  value: dayjs.Dayjs;
+};
+
+export const BasicDatePicker = ({ value }: Props) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
+        value={value}
         label="Data*"
         format="DD-MM-YYYY"
         slotProps={{
