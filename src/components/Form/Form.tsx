@@ -31,7 +31,7 @@ type MockAnnouncement = {
   date: dayjs.Dayjs;
   gender: string;
   city: string;
-  age: number;
+  age: string;
   color: string;
   race: string;
   content: string;
@@ -45,7 +45,7 @@ export const Form = () => {
     date: dayjs(),
     gender: "",
     city: "",
-    age: 0,
+    age: "",
     color: "",
     race: "",
     content: "",
@@ -104,11 +104,12 @@ export const Form = () => {
           type="file"
           style={{ display: "none" }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (!e.target.files) return;
             const reader = new FileReader();
             reader.onloadend = () => {
               setImage(reader.result as string);
             };
-            reader.readAsDataURL(e.target.files![0]!);
+            reader.readAsDataURL(e.target.files[0]);
           }}
         />
         <AddImg
