@@ -10,7 +10,6 @@ import {
   Liked,
   PetDetails,
   PetProfileImg,
-  Message,
   ReturnButton,
 } from "./styled";
 import {
@@ -19,7 +18,6 @@ import {
   UserName,
 } from "../HomePage/PhotoAndUserName/styled";
 import { MainContent } from "../../styled";
-import SmsIcon from "@mui/icons-material/Sms";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
@@ -68,10 +66,7 @@ export const PetProfile = () => {
         </Description>
       </MainContent>
       <Contact>
-        <Message>
-          <SmsIcon />
-        </Message>
-        <Adopt>Przygarnij</Adopt>
+        <Adopt>Napisz wiadomość</Adopt>
       </Contact>
     </>
   );

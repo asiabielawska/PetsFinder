@@ -26,13 +26,13 @@ export const UserProfile = () => {
         <PhotoAndUserName />
         <Heading>Ostatnio dodane</Heading>
 
-        {mockPets.map(({ petImg, petText, id }) => (
+        {mockPets.map(({ petImg, petText: { animal, age, gender }, id }) => (
           <Announcement onClick={() => navigate("/pet-profile")} key={id}>
             <AnnouncementImg src={petImg} />
             <AnnouncementText>
-              <Animal>{petText.animal}</Animal>
-              <div>{petText.gender}</div>
-              <div>{petText.age}</div>
+              <Animal>{animal}</Animal>
+              <div>{gender}</div>
+              <div>{age}</div>
             </AnnouncementText>
           </Announcement>
         ))}

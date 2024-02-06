@@ -86,7 +86,7 @@ export const Adopt = styled("button")({
   backgroundColor: "#917B60",
   border: "1px solid #917B60",
   height: 40,
-  width: 130,
+  width: "95%",
   borderRadius: 20,
   color: "white",
 });
