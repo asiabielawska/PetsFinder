@@ -8,36 +8,82 @@ import {
   WhiteBackgroundButton,
 } from "./styled";
 import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
-import { TypeOfReportSelect } from "./TypeOfReport/TypeOfReportSelect";
-import { AnimalSelect } from "./AnimalSelect/AnimalSelect";
-import { GenderSelect } from "./GenderSelect/GenderSelect";
 import { useRef, useState } from "react";
+import { BasicSelect } from "../../components/BasicSelect/BasicSelect";
+import dayjs from "dayjs";
 
 const mockForm = [
-  { id: "miejscowosc", label: "Miejscowość*" },
-  { id: "wiek", label: "Wiek" },
-  { id: "kolor", label: "Kolor" },
-  { id: "rasa", label: "Rasa" },
+  { id: "city", label: "Miejscowość*" },
+  { id: "age", label: "Wiek" },
+  { id: "color", label: "Kolor" },
+  { id: "race", label: "Rasa" },
   {
-    id: "opis",
+    id: "content",
     label: "Krótki opis zwierzęcia/sytuacji",
     multiline: true,
     rows: 4,
   },
 ];
 
+type MockAnnouncement = {
+  type: string;
+  animal: string;
+  date: dayjs.Dayjs;
+  gender: string;
+  city: string;
+  age: string;
+  color: string;
+  race: string;
+  content: string;
+  img: string | null;
+};
+
 export const Form = () => {
+  const [newAnnouncement, setNewAnnouncement] = useState<MockAnnouncement>({
+    type: "",
+    animal: "",
+    date: dayjs(),
+    gender: "",
+    city: "",
+    age: "",
+    color: "",
+    race: "",
+    content: "",
+    img: "",
+  });
   const navigate = useNavigate();
   const [image, setImage] = useState<string | null>();
   const ref = useRef<HTMLInputElement | null>(null);
+
   return (
     <>
-      <MainContent>
+      <MainContent style={{ paddingBottom: 5 }}>
         <Heading>Dane</Heading>
-        <TypeOfReportSelect />
-        <AnimalSelect />
-        <BasicDatePicker />
-        <GenderSelect />
+        <BasicSelect
+          label={"Typ zgłoszenia*"}
+          options={["Zgubiono", "Znaleziono", "Oddam", "Szukam"]}
+          value={newAnnouncement.type}
+          onChange={(newValue: string) => {
+            setNewAnnouncement((prev) => ({ ...prev, type: newValue }));
+          }}
+        />
+        <BasicSelect
+          label={"Zwierzę*"}
+          options={["Piesek", "Kotek", "Ptak", "Inne"]}
+          value={newAnnouncement.animal}
+          onChange={(newValue: string) => {
+            setNewAnnouncement((prev) => ({ ...prev, animal: newValue }));
+          }}
+        />
+        <BasicDatePicker value={newAnnouncement.date} />
+        <BasicSelect
+          label={"Płeć"}
+          options={["Ona", "On", "Nie wiem"]}
+          value={newAnnouncement.gender}
+          onChange={(newValue: string) => {
+            setNewAnnouncement((prev) => ({ ...prev, gender: newValue }));
+          }}
+        />
         {mockForm.map(({ id, label, multiline, rows }) => (
           <FormTextField
             key={id}
@@ -46,6 +92,11 @@ export const Form = () => {
             variant="outlined"
             multiline={multiline}
             rows={rows}
+            value={newAnnouncement[id as keyof MockAnnouncement]}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              const newValue = event.target.value as string;
+              setNewAnnouncement((prev) => ({ ...prev, [id]: newValue }));
+            }}
           />
         ))}
         <input
@@ -53,16 +104,16 @@ export const Form = () => {
           type="file"
           style={{ display: "none" }}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (!e.target.files) return;
             const reader = new FileReader();
             reader.onloadend = () => {
               setImage(reader.result as string);
             };
-            reader.readAsDataURL(e.target.files![0]!);
+            reader.readAsDataURL(e.target.files[0]);
           }}
         />
         <AddImg
           onClick={() => {
-            console.log("click");
             ref.current?.click();
           }}
         >
@@ -74,7 +125,13 @@ export const Form = () => {
           <WhiteBackgroundButton onClick={() => navigate("/")}>
             Cofnij
           </WhiteBackgroundButton>
-          <BrownBackgroundButton>Dodaj ogłoszenie</BrownBackgroundButton>
+          <BrownBackgroundButton
+            onClick={() => {
+              console.log(newAnnouncement);
+            }}
+          >
+            Dodaj ogłoszenie
+          </BrownBackgroundButton>
         </TwoButtons>
       </MainContent>
     </>
