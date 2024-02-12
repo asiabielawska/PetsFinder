@@ -4,8 +4,11 @@ import {
   CommonCategories,
   LostFindButtons,
 } from "./styled";
-import PetsIcon from "@mui/icons-material/Pets";
-import BlockIcon from "@mui/icons-material/Block";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCat } from "@fortawesome/free-solid-svg-icons";
+import { faDog } from "@fortawesome/free-solid-svg-icons";
+import { faBan } from "@fortawesome/free-solid-svg-icons";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
 export const MainCommonCategories = () => {
   return (
@@ -13,25 +16,25 @@ export const MainCommonCategories = () => {
       <CommonCategories>
         <Category>
           <CategoryButton>
-            <PetsIcon />
+            <FontAwesomeIcon icon={faCat} />
           </CategoryButton>
           <div>Kotki</div>
         </Category>
         <Category>
           <CategoryButton>
-            <PetsIcon />
+            <FontAwesomeIcon icon={faDog} />
           </CategoryButton>
           <div>Pieski</div>
         </Category>
         <Category>
           <CategoryButton>
-            <PetsIcon />
+            <FontAwesomeIcon icon={faPaw} />
           </CategoryButton>
           <div>Inne</div>
         </Category>
         <Category>
           <CategoryButton>
-            <BlockIcon fontSize="medium" />
+            <FontAwesomeIcon icon={faBan} />
           </CategoryButton>
         </Category>
       </CommonCategories>

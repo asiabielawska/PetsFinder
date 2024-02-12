@@ -24,6 +24,7 @@ export const CategoryButton = styled("button")({
   width: 40,
   borderRadius: 10,
   color: "white",
+  fontSize: 25,
 });
 
 export const LostFindButtons = styled("button")({
