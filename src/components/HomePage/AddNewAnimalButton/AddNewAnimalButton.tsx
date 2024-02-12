@@ -6,7 +6,11 @@ export const AddNewAnimalButton = () => {
   return (
     <>
       <button
-        style={{ border: "none", background: "none" }}
+        style={{
+          border: "none",
+          background: "none",
+          color: "rgb(166, 61, 64)",
+        }}
         onClick={() => navigate("/form")}
       >
         <AddIcon fontSize="large" />

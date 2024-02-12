@@ -62,7 +62,7 @@ export const PetProfile = () => {
         </DateAndLocation>
         <Description>
           Kotek znaleziony dnia 11.01.2024 r. przy galerii w okolicy centrum.
-          Aktualnie jest zabezpieczony u mnie w domu.
+          Aktualnie jest u mnie w domu.
         </Description>
       </MainContent>
       <Contact>
