@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HomePage } from "./HomePage.tsx";
+import { HomePage } from "./components/HomePage/HomePage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { PetProfile } from "./components/PetProfile/PetProfile.tsx";

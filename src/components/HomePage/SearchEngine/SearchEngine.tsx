@@ -1,8 +1,8 @@
-import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
+import { Form } from "./styled";
 
 export const SearchEngine = () => {
   return (
@@ -11,17 +11,7 @@ export const SearchEngine = () => {
         paddingTop: 25,
       }}
     >
-      <Paper
-        component="form"
-        sx={{
-          p: "2px 4px",
-          display: "flex",
-          alignItems: "center",
-          borderRadius: 10,
-          border: "1px solid #917B60",
-          boxShadow: "none",
-        }}
-      >
+      <Form>
         <IconButton sx={{ p: "10px", color: "#917B60" }} aria-label="filtruj">
           <TuneIcon />
         </IconButton>
@@ -37,7 +27,7 @@ export const SearchEngine = () => {
         >
           <SearchIcon />
         </IconButton>
-      </Paper>
+      </Form>
     </div>
   );
 };

@@ -10,47 +10,12 @@ import {
 import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
 import { useRef, useState } from "react";
 import { BasicSelect } from "../../components/BasicSelect/BasicSelect";
-import dayjs from "dayjs";
-
-const mockForm = [
-  { id: "city", label: "Miejscowość*" },
-  { id: "age", label: "Wiek" },
-  { id: "color", label: "Kolor" },
-  { id: "race", label: "Rasa" },
-  {
-    id: "content",
-    label: "Krótki opis zwierzęcia/sytuacji",
-    multiline: true,
-    rows: 4,
-  },
-];
-
-type MockAnnouncement = {
-  type: string;
-  animal: string;
-  date: dayjs.Dayjs;
-  gender: string;
-  city: string;
-  age: string;
-  color: string;
-  race: string;
-  content: string;
-  img: string | null;
-};
+import { mockForm } from "./constants";
+import { useAnnouncementForm } from "./Hooks/useAnnouncementForm";
+import { MockAnnouncement } from "./Hooks/useAnnouncementForm";
 
 export const Form = () => {
-  const [newAnnouncement, setNewAnnouncement] = useState<MockAnnouncement>({
-    type: "",
-    animal: "",
-    date: dayjs(),
-    gender: "",
-    city: "",
-    age: "",
-    color: "",
-    race: "",
-    content: "",
-    img: "",
-  });
+  const [newAnnouncement, setNewAnnouncement] = useAnnouncementForm();
   const navigate = useNavigate();
   const [image, setImage] = useState<string | null>();
   const ref = useRef<HTMLInputElement | null>(null);
