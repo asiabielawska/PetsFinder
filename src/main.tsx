@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HomePage } from "./components/HomePage/HomePage.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { PetProfile } from "./components/PetProfile/PetProfile.tsx";
 import { UserProfile } from "./components/UserProfile/UserProfile.tsx";
@@ -10,7 +10,7 @@ import { Liked } from "./components/Liked/Liked.tsx";
 import { Messages } from "./components/Messages/Messages.tsx";
 import { Layout } from "./components/Layout.tsx";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "",
     element: (
