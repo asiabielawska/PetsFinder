@@ -6,8 +6,7 @@ import {
   AnnouncementText,
 } from "../HomePage/LatestAnnouncements/styled";
 import koteczek from "../../assets/kotek.webp";
-import { Heading, MainContent } from "../../styled";
-import { BottomMainMenuBar } from "../common/BottomMainMenuBar/BottomMainMenuBar";
+import { Heading } from "../../styled";
 import { PhotoAndUserName } from "../common/PhotoAndUserName/PhotoAndUserName";
 
 const mockPets = [
@@ -37,21 +36,18 @@ export const Liked = () => {
   const navigate = useNavigate();
   return (
     <>
-      <MainContent>
-        <PhotoAndUserName />
-        <Heading>Twoje polubienia</Heading>
-        {mockPets.map(({ petImg, petText, id }) => (
-          <Announcement onClick={() => navigate("/pet-profile")} key={id}>
-            <AnnouncementImg src={petImg} />
-            <AnnouncementText>
-              <Animal>{petText.animal}</Animal>
-              <div>{petText.gender}</div>
-              <div>{petText.age}</div>
-            </AnnouncementText>
-          </Announcement>
-        ))}
-      </MainContent>
-      <BottomMainMenuBar />
+      <PhotoAndUserName />
+      <Heading>Twoje polubienia</Heading>
+      {mockPets.map(({ petImg, petText, id }) => (
+        <Announcement onClick={() => navigate("/pet-profile")} key={id}>
+          <AnnouncementImg src={petImg} />
+          <AnnouncementText>
+            <Animal>{petText.animal}</Animal>
+            <div>{petText.gender}</div>
+            <div>{petText.age}</div>
+          </AnnouncementText>
+        </Announcement>
+      ))}
     </>
   );
 };

@@ -4,8 +4,7 @@ import {
   UserImage,
   UserName,
 } from "../common/PhotoAndUserName/styled";
-import { Heading, MainContent } from "../../styled";
-import { BottomMainMenuBar } from "../common/BottomMainMenuBar/BottomMainMenuBar";
+import { Heading } from "../../styled";
 import { Content, Message, NameAndContent } from "./styled";
 
 const mockMessages = [
@@ -27,25 +26,22 @@ export const Messages = () => {
   const navigate = useNavigate();
   return (
     <>
-      <MainContent>
-        <PhotoAndName>
-          <UserImage onClick={() => navigate("/user-profile")}></UserImage>
-          <UserName onClick={() => navigate("/user-profile")}>
-            Nazwa uzytkownika
-          </UserName>
-        </PhotoAndName>
-        <Heading>Wiadomości</Heading>
-        {mockMessages.map(({ userName, content }) => (
-          <Message key={userName}>
-            <UserImage></UserImage>
-            <NameAndContent>
-              <UserName>{userName}</UserName>
-              <Content>{content}</Content>
-            </NameAndContent>
-          </Message>
-        ))}
-      </MainContent>
-      <BottomMainMenuBar />
+      <PhotoAndName>
+        <UserImage onClick={() => navigate("/user-profile")}></UserImage>
+        <UserName onClick={() => navigate("/user-profile")}>
+          Nazwa uzytkownika
+        </UserName>
+      </PhotoAndName>
+      <Heading>Wiadomości</Heading>
+      {mockMessages.map(({ userName, content }) => (
+        <Message key={userName}>
+          <UserImage></UserImage>
+          <NameAndContent>
+            <UserName>{userName}</UserName>
+            <Content>{content}</Content>
+          </NameAndContent>
+        </Message>
+      ))}
     </>
   );
 };

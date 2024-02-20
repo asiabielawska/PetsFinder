@@ -8,17 +8,46 @@ import { UserProfile } from "./components/UserProfile/UserProfile.tsx";
 import { Form } from "./components/Form/Form.tsx";
 import { Liked } from "./components/Liked/Liked.tsx";
 import { Messages } from "./components/Messages/Messages.tsx";
+import { Layout } from "./components/Layout.tsx";
 
 const router = createBrowserRouter([
   {
     path: "",
-    element: <HomePage />,
+    element: (
+      <Layout>
+        <HomePage />
+      </Layout>
+    ),
   },
-  { path: "pet-profile", element: <PetProfile /> },
-  { path: "user-profile", element: <UserProfile /> },
+  {
+    path: "pet-profile",
+    element: <PetProfile />,
+  },
+  {
+    path: "user-profile",
+    element: (
+      <Layout>
+        <UserProfile />
+      </Layout>
+    ),
+  },
   { path: "form", element: <Form /> },
-  { path: "liked", element: <Liked /> },
-  { path: "messages", element: <Messages /> },
+  {
+    path: "liked",
+    element: (
+      <Layout>
+        <Liked />
+      </Layout>
+    ),
+  },
+  {
+    path: "messages",
+    element: (
+      <Layout>
+        <Messages />{" "}
+      </Layout>
+    ),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
