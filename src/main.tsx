@@ -44,7 +44,7 @@ const router = createBrowserRouter([
     path: "messages",
     element: (
       <Layout>
-        <Messages />{" "}
+        <Messages />
       </Layout>
     ),
   },
