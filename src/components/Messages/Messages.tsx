@@ -3,9 +3,9 @@ import {
   PhotoAndName,
   UserImage,
   UserName,
-} from "../HomePage/PhotoAndUserName/styled";
+} from "../common/PhotoAndUserName/styled";
 import { Heading, MainContent } from "../../styled";
-import { BottomMainMenuBar } from "../HomePage/BottomMainMenuBar/BottomMainMenuBar";
+import { BottomMainMenuBar } from "../common/BottomMainMenuBar/BottomMainMenuBar";
 import { Content, Message, NameAndContent } from "./styled";
 
 const mockMessages = [

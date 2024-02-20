@@ -7,8 +7,8 @@ import {
 } from "../HomePage/LatestAnnouncements/styled";
 import koteczek from "../../assets/kotek.webp";
 import { Heading, MainContent } from "../../styled";
-import { BottomMainMenuBar } from "../HomePage/BottomMainMenuBar/BottomMainMenuBar";
-import { PhotoAndUserName } from "../HomePage/PhotoAndUserName/PhotoAndUserName";
+import { BottomMainMenuBar } from "../common/BottomMainMenuBar/BottomMainMenuBar";
+import { PhotoAndUserName } from "../common/PhotoAndUserName/PhotoAndUserName";
 
 const mockPets = [
   {

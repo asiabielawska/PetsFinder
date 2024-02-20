@@ -1,8 +1,8 @@
 import { AddNewAnimalButton } from "./AddNewAnimalButton/AddNewAnimalButton";
-import { BottomMainMenuBar } from "./BottomMainMenuBar/BottomMainMenuBar";
+import { BottomMainMenuBar } from "../common/BottomMainMenuBar/BottomMainMenuBar";
 import { MainCommonCategories } from "./CommonCategories/MainCommonCategories";
 import { LatestAnnouncements } from "./LatestAnnouncements/LatestAnnouncements";
-import { PhotoAndUserName } from "./PhotoAndUserName/PhotoAndUserName";
+import { PhotoAndUserName } from "../common/PhotoAndUserName/PhotoAndUserName";
 import { SearchEngine } from "./SearchEngine/SearchEngine";
 
 import { Heading, MainContent, UserAndAddButton } from "../../styled";

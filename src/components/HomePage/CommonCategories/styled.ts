@@ -2,7 +2,6 @@ import { styled } from "@mui/material";
 
 export const CommonCategories = styled("div")({
   display: "flex",
-  flexDirection: "row",
   paddingTop: 15,
   width: "100%",
   justifyContent: "space-between",

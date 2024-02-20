@@ -16,7 +16,7 @@ import {
   PhotoAndName,
   UserImage,
   UserName,
-} from "../HomePage/PhotoAndUserName/styled";
+} from "../common/PhotoAndUserName/styled";
 import { MainContent } from "../../styled";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
