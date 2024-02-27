@@ -55,12 +55,12 @@ export const BrownBackgroundButton = styled("button")({
   color: "white",
 });
 
-export const AddImg = styled("button")({
+export const AddImg = styled("button")((props) => ({
   marginTop: 15,
-  backgroundColor: "#D6C3AE",
+  backgroundColor: props.theme.palette.secondary.main,
   border: "1px solid #917B60",
   height: 40,
   width: "100%",
   color: "black",
   borderRadius: 20,
-});
+}));

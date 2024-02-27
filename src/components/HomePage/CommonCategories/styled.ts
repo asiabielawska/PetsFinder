@@ -7,32 +7,32 @@ export const CommonCategories = styled("div")({
   justifyContent: "space-between",
 });
 
-export const Category = styled("div")({
+export const Category = styled("div")((props) => ({
   display: "flex",
   flexDirection: "column",
-  color: "#5E503F",
+  color: props.theme.palette.primary.main,
   fontSize: 13,
   alignItems: "center",
   fontWeight: "bold",
-});
+}));
 
-export const CategoryButton = styled("button")({
+export const CategoryButton = styled("button")((props) => ({
   border: "none",
-  backgroundColor: "#D6C3AE",
+  backgroundColor: props.theme.palette.secondary.main,
   height: 40,
   width: 40,
   borderRadius: 10,
   color: "white",
   fontSize: 25,
-});
+}));
 
-export const LostFindButtons = styled("button")({
+export const LostFindButtons = styled("button")((props) => ({
   border: "none",
-  backgroundColor: "#D6C3AE",
+  backgroundColor: props.theme.palette.secondary.main,
   height: 30,
   width: "auto",
   borderRadius: 5,
   color: "white",
   marginRight: 5,
   fontWeight: 900,
-});
+}));

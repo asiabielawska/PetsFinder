@@ -8,6 +8,8 @@ import {
 import koteczek from "../../assets/kotek.webp";
 import { PhotoAndUserName } from "../common/PhotoAndUserName/PhotoAndUserName";
 import { Heading } from "../../styled";
+import EditIcon from "@mui/icons-material/Edit";
+import { Edit } from "./styled";
 
 const mockPets = [
   {
@@ -25,14 +27,19 @@ export const UserProfile = () => {
       <Heading>Ostatnio dodane</Heading>
 
       {mockPets.map(({ petImg, petText: { animal, age, gender }, id }) => (
-        <Announcement onClick={() => navigate("/pet-profile")} key={id}>
-          <AnnouncementImg src={petImg} />
-          <AnnouncementText>
-            <Animal>{animal}</Animal>
-            <div>{gender}</div>
-            <div>{age}</div>
-          </AnnouncementText>
-        </Announcement>
+        <>
+          <Announcement onClick={() => navigate("/pet-profile")} key={id}>
+            <AnnouncementImg src={petImg} />
+            <AnnouncementText>
+              <Animal>{animal}</Animal>
+              <div>{gender}</div>
+              <div>{age}</div>
+            </AnnouncementText>
+            <Edit>
+              <EditIcon />
+            </Edit>
+          </Announcement>
+        </>
       ))}
     </>
   );

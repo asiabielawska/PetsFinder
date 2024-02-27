@@ -9,6 +9,8 @@ import { Form } from "./components/Form/Form.tsx";
 import { Liked } from "./components/Liked/Liked.tsx";
 import { Messages } from "./components/Messages/Messages.tsx";
 import { Layout } from "./components/Layout.tsx";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./theme.ts";
 
 const router = createHashRouter([
   {
@@ -52,6 +54,8 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );

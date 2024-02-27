@@ -9,12 +9,12 @@ export const MainContent = styled("div")({
   flexDirection: "column",
 });
 
-export const Heading = styled("div")({
+export const Heading = styled("div")((props) => ({
   marginTop: 20,
-  color: "#5E503F",
+  color: props.theme.palette.primary.main,
   fontWeight: 900,
   fontSize: 15,
-});
+}));
 
 export const UserAndAddButton = styled("div")({
   display: "flex",

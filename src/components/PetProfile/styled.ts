@@ -23,18 +23,18 @@ export const PetProfileImg = styled("img")({
   objectFit: "contain",
 });
 
-export const PetDetails = styled("div")({
+export const PetDetails = styled("div")((props) => ({
   display: "flex",
   flexDirection: "row",
   paddingTop: 15,
   width: "100%",
   justifyContent: "space-between",
-  color: "#5E503F",
+  color: props.theme.palette.primary.main,
   marginBottom: 15,
-});
+}));
 
-export const Detail = styled("div")({
-  backgroundColor: "#D6C3AE",
+export const Detail = styled("div")((props) => ({
+  backgroundColor: props.theme.palette.secondary.main,
   display: "flex",
   height: 40,
   width: 60,
@@ -43,23 +43,23 @@ export const Detail = styled("div")({
   color: "white",
   justifyContent: "center",
   alignItems: "center",
-});
+}));
 
-export const DateAndLocation = styled("div")({
+export const DateAndLocation = styled("div")((props) => ({
   fontSize: 12,
-  color: "#5E503F",
+  color: props.theme.palette.primary.main,
   display: "flex",
   marginTop: 15,
   justifyContent: "space-between",
-});
+}));
 
 export const Date = styled("div")({});
 
-export const Description = styled("div")({
+export const Description = styled("div")((props) => ({
   marginTop: 20,
-  color: "#5E503F",
+  color: props.theme.palette.primary.main,
   fontSize: 15,
-});
+}));
 
 export const Contact = styled("div")({
   display: "flex",
