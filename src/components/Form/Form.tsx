@@ -8,16 +8,16 @@ import {
   WhiteBackgroundButton,
 } from "./styled";
 import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { BasicSelect } from "../../components/BasicSelect/BasicSelect";
 import { mockForm } from "./constants";
 import { useAnnouncementForm } from "./Hooks/useAnnouncementForm";
 import { MockAnnouncement } from "./Hooks/useAnnouncementForm";
+import { advertisementDatabase } from "../announcementDatabase";
 
 export const Form = () => {
   const [newAnnouncement, setNewAnnouncement] = useAnnouncementForm();
   const navigate = useNavigate();
-  const [image, setImage] = useState<string | null>();
   const ref = useRef<HTMLInputElement | null>(null);
 
   return (
@@ -72,7 +72,10 @@ export const Form = () => {
             if (!e.target.files) return;
             const reader = new FileReader();
             reader.onloadend = () => {
-              setImage(reader.result as string);
+              setNewAnnouncement((prev) => ({
+                ...prev,
+                img: reader.result as string,
+              }));
             };
             reader.readAsDataURL(e.target.files[0]);
           }}
@@ -84,7 +87,7 @@ export const Form = () => {
         >
           Dodaj zdjęcie
         </AddImg>
-        {image && <img src={image} />}
+        {newAnnouncement.img && <img src={newAnnouncement.img} />}
 
         <TwoButtons>
           <WhiteBackgroundButton onClick={() => navigate("/")}>
@@ -92,7 +95,11 @@ export const Form = () => {
           </WhiteBackgroundButton>
           <BrownBackgroundButton
             onClick={() => {
-              console.log(newAnnouncement);
+              advertisementDatabase.push({
+                ...newAnnouncement,
+                id: advertisementDatabase.length,
+              });
+              navigate("/");
             }}
           >
             Dodaj ogłoszenie

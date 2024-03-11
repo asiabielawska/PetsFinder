@@ -11,7 +11,8 @@ export type MockAnnouncement = {
   color: string;
   race: string;
   content: string;
-  img: string | null;
+  img?: string;
+  id: number;
 };
 
 export const useAnnouncementForm = () => {
@@ -26,6 +27,7 @@ export const useAnnouncementForm = () => {
     race: "",
     content: "",
     img: "",
+    id: 0,
   });
   return [newAnnouncement, setNewAnnouncement] as const;
 };

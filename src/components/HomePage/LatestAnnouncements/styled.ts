@@ -8,6 +8,8 @@ export const Announcement = styled("div")({
 
 export const AnnouncementImg = styled("img")({
   height: 150,
+  borderRadius: 10,
+  width: 100,
 });
 
 export const AnnouncementText = styled("div")((props) => ({
