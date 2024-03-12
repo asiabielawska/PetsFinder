@@ -6,12 +6,9 @@ const meta = {
   title: "PetsFinderUI/BasicSelect",
   component: BasicSelect,
   parameters: {
-    // Center the component in the Canvas.
     layout: "centered",
   },
-  // // Automatically generated Autodocs
   tags: ["autodocs"],
-  // // More on argTypes: https://storybook.js.org/docs/api/argtypes
   //   argTypes: {
   //     value: { control: "number" },
   //   },
