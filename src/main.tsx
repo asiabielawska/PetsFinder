@@ -11,6 +11,9 @@ import { Messages } from "./components/Messages/Messages.tsx";
 import { Layout } from "./components/Layout.tsx";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme.ts";
+import { Provider } from "react-redux";
+import store from "./store/store.ts";
+import { LoginPage } from "./components/LoginPage/LoginPage.tsx";
 
 const router = createHashRouter([
   {
@@ -50,12 +53,15 @@ const router = createHashRouter([
       </Layout>
     ),
   },
+  { path: "login-page", element: <LoginPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 );
