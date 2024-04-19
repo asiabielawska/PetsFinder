@@ -8,6 +8,9 @@ import {
 import koteczek from "../../assets/kotek.webp";
 import { Heading } from "../../styled";
 import { PhotoAndUserName } from "../common/PhotoAndUserName/PhotoAndUserName";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../userState/userState";
+import { useEffect } from "react";
 
 const mockPets = [
   {
@@ -34,6 +37,13 @@ const mockPets = [
 
 export const Liked = () => {
   const navigate = useNavigate();
+  const userLogged = useSelector(selectUser);
+
+  useEffect(() => {
+    if (userLogged === false) {
+      navigate("/login-page");
+    }
+  }, []);
   return (
     <>
       <PhotoAndUserName />

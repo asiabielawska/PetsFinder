@@ -8,17 +8,26 @@ import {
   WhiteBackgroundButton,
 } from "./styled";
 import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { BasicSelect } from "../../components/BasicSelect/BasicSelect";
 import { mockForm } from "./constants";
 import { useAnnouncementForm } from "./Hooks/useAnnouncementForm";
 import { MockAnnouncement } from "./Hooks/useAnnouncementForm";
 import { advertisementDatabase } from "../announcementDatabase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../userState/userState";
 
 export const Form = () => {
   const [newAnnouncement, setNewAnnouncement] = useAnnouncementForm();
   const navigate = useNavigate();
   const ref = useRef<HTMLInputElement | null>(null);
+  const userLogged = useSelector(selectUser);
+
+  useEffect(() => {
+    if (userLogged === false) {
+      navigate("/login-page");
+    }
+  }, []);
 
   return (
     <>
