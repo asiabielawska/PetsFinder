@@ -10,18 +10,38 @@ import {
   LoginHeading,
 } from "./styled";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../userState/userState";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState<string | undefined>(undefined);
+  const [password, setPassword] = useState<string | undefined>(undefined);
+  const login = () => {
+    if (email !== undefined && password !== undefined) {
+      dispatch(loginUser());
+      navigate("/");
+    }
+  };
   return (
     <MainContent>
       <LoginHeading>Witaj ponownie!</LoginHeading>
       <IconContainer>
         <Icon icon={faPaw}></Icon>
       </IconContainer>
-      <Input label="Email" variant="outlined" />
-      <TextField label="Hasło" variant="outlined" />
-      <DarkButton>Zaloguj się</DarkButton>
+      <Input
+        label="Email"
+        variant="outlined"
+        onChange={(event) => setEmail(event.target.value)}
+      />
+      <TextField
+        label="Hasło"
+        variant="outlined"
+        onChange={(event) => setPassword(event.target.value)}
+      />
+      <DarkButton onClick={login}>Zaloguj się</DarkButton>
       <LightButton onClick={() => navigate("/")}>
         Kontunuuj bez logowania
       </LightButton>
