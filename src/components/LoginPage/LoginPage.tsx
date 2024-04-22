@@ -14,13 +14,18 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../userState/userState";
 
+const mockUser = {
+  login: "Asia",
+  password: "Admin!123",
+};
+
 export const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState<string | undefined>(undefined);
   const [password, setPassword] = useState<string | undefined>(undefined);
   const login = () => {
-    if (email !== undefined && password !== undefined) {
+    if (email === mockUser.login && password === mockUser.password) {
       dispatch(loginUser());
       navigate("/");
     }
