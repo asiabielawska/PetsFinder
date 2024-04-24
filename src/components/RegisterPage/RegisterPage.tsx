@@ -1,9 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { MainContent } from "../../styled";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../userState/userState";
+import { MainContent } from "../../styled";
 import {
   DarkButton,
   Icon,
@@ -12,13 +8,17 @@ import {
   LightButton,
   LoginHeading,
 } from "../styled";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../userState/userState";
 
 const mockUser = {
   login: "Asia",
   password: "Admin!123",
 };
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState<string | undefined>(undefined);
@@ -31,7 +31,7 @@ export const LoginPage = () => {
   };
   return (
     <MainContent>
-      <LoginHeading>Witaj ponownie!</LoginHeading>
+      <LoginHeading>Zarejestruj się</LoginHeading>
       <IconContainer>
         <Icon icon={faPaw}></Icon>
       </IconContainer>
@@ -46,12 +46,15 @@ export const LoginPage = () => {
         type="password"
         onChange={(event) => setPassword(event.target.value)}
       />
-      <DarkButton onClick={login}>Zaloguj się</DarkButton>
-      <LightButton onClick={() => navigate("/register-page")}>
-        Zarejestruj się
-      </LightButton>
+      <Input
+        label="Powtórz hasło"
+        variant="outlined"
+        type="password"
+        onChange={(event) => setPassword(event.target.value)}
+      />
+      <DarkButton onClick={login}>Zarejestruj się</DarkButton>
       <LightButton onClick={() => navigate("/")}>
-        Kontunuuj bez logowania
+        Kontunuuj bez rejestracji
       </LightButton>
     </MainContent>
   );

@@ -14,6 +14,7 @@ import { theme } from "./theme.ts";
 import { Provider } from "react-redux";
 import store from "./store/store.ts";
 import { LoginPage } from "./components/LoginPage/LoginPage.tsx";
+import { RegisterPage } from "./components/RegisterPage/RegisterPage.tsx";
 
 const router = createHashRouter([
   {
@@ -54,6 +55,7 @@ const router = createHashRouter([
     ),
   },
   { path: "login-page", element: <LoginPage /> },
+  { path: "register-page", element: <RegisterPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
