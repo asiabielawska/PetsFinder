@@ -23,7 +23,7 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState<string | undefined>(undefined);
   const [password, setPassword] = useState<string | undefined>(undefined);
-  const login = () => {
+  const register = () => {
     if (email === mockUser.login && password === mockUser.password) {
       dispatch(loginUser());
       navigate("/");
@@ -52,7 +52,7 @@ export const RegisterPage = () => {
         type="password"
         onChange={(event) => setPassword(event.target.value)}
       />
-      <DarkButton onClick={login}>Zarejestruj się</DarkButton>
+      <DarkButton onClick={register}>Zarejestruj się</DarkButton>
       <LightButton onClick={() => navigate("/")}>
         Kontunuuj bez rejestracji
       </LightButton>
