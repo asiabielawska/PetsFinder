@@ -13,20 +13,20 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../userState/userState";
 
-const mockUser = {
-  login: "Asia",
-  password: "Admin!123",
-};
-
 export const RegisterPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState<string | undefined>(undefined);
   const [password, setPassword] = useState<string | undefined>(undefined);
+  const [passwordRep, setPasswordRep] = useState<string | undefined>(undefined);
+  const [registerStatus, setRegisterStatus] = useState("");
   const register = () => {
-    if (email === mockUser.login && password === mockUser.password) {
+    if (password === passwordRep && email) {
+      setRegisterStatus("Success");
       dispatch(loginUser());
       navigate("/");
+    } else {
+      setRegisterStatus("Error");
     }
   };
   return (
@@ -50,8 +50,9 @@ export const RegisterPage = () => {
         label="Powtórz hasło"
         variant="outlined"
         type="password"
-        onChange={(event) => setPassword(event.target.value)}
+        onChange={(event) => setPasswordRep(event.target.value)}
       />
+      {registerStatus === "Error" && <div>Niewłaściwy email lub hasło</div>}
       <DarkButton onClick={register}>Zarejestruj się</DarkButton>
       <LightButton onClick={() => navigate("/")}>
         Kontunuuj bez rejestracji
