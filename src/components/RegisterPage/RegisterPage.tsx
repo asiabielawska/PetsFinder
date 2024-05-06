@@ -7,6 +7,7 @@ import {
   Input,
   LightButton,
   LoginHeading,
+  TextError,
 } from "../styled";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -52,7 +53,9 @@ export const RegisterPage = () => {
         type="password"
         onChange={(event) => setPasswordRep(event.target.value)}
       />
-      {registerStatus === "Error" && <div>Niewłaściwy email lub hasło</div>}
+      {registerStatus === "Error" && (
+        <TextError>Niewłaściwy email lub hasło</TextError>
+      )}
       <DarkButton onClick={register}>Zarejestruj się</DarkButton>
       <LightButton onClick={() => navigate("/")}>
         Kontunuuj bez rejestracji
