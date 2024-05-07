@@ -26,7 +26,6 @@ export const RegisterPage = () => {
     email: string;
     repeatPassword: string;
   }>();
-  console.log(errors);
 
   return (
     <MainContent>
