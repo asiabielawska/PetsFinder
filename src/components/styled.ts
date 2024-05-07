@@ -39,9 +39,11 @@ export const Icon = styled(FontAwesomeIcon)((props) => ({
 
 export const Input = styled(TextField)({
   marginBottom: 15,
+  width: "100%",
 });
 
 export const TextError = styled("div")({
   color: "red",
   fontSize: 12,
+  marginBottom: 10,
 });

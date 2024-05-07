@@ -9,57 +9,81 @@ import {
   LoginHeading,
   TextError,
 } from "../styled";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../userState/userState";
+import { useForm } from "react-hook-form";
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState<string | undefined>(undefined);
-  const [password, setPassword] = useState<string | undefined>(undefined);
-  const [passwordRep, setPasswordRep] = useState<string | undefined>(undefined);
-  const [registerStatus, setRegisterStatus] = useState("");
-  const register = () => {
-    if (password === passwordRep && email) {
-      setRegisterStatus("Success");
-      dispatch(loginUser());
-      navigate("/");
-    } else {
-      setRegisterStatus("Error");
-    }
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<{
+    password: string;
+    email: string;
+    repeatPassword: string;
+  }>();
+  console.log(errors);
+
   return (
     <MainContent>
       <LoginHeading>Zarejestruj się</LoginHeading>
       <IconContainer>
         <Icon icon={faPaw}></Icon>
       </IconContainer>
-      <Input
-        label="Email"
-        variant="outlined"
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <Input
-        label="Hasło"
-        variant="outlined"
-        type="password"
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <Input
-        label="Powtórz hasło"
-        variant="outlined"
-        type="password"
-        onChange={(event) => setPasswordRep(event.target.value)}
-      />
-      {registerStatus === "Error" && (
-        <TextError>Niewłaściwy email lub hasło</TextError>
-      )}
-      <DarkButton onClick={register}>Zarejestruj się</DarkButton>
-      <LightButton onClick={() => navigate("/")}>
-        Kontunuuj bez rejestracji
-      </LightButton>
+      <form
+        onSubmit={handleSubmit(() => {
+          dispatch(loginUser());
+          navigate("/");
+        })}
+      >
+        <Input
+          {...register("email", { required: "To pole jest wymagane" })}
+          label="Email"
+          variant="outlined"
+        />
+        <Input
+          {...register("password", {
+            required:
+              "Hasło musi mieć długość przynajmniej 8 znaków i musi zawierać przynajmniej jedną duzą literę, liczbę oraz znak specjalny.",
+            pattern: {
+              value:
+                /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/,
+              message:
+                "Hasło musi mieć długość przynajmniej 8 znaków i musi zawierać przynajmniej jedną duzą literę, liczbę oraz znak specjalny.",
+            },
+          })}
+          label="Hasło"
+          variant="outlined"
+          type="password"
+        />
+        {errors.password?.message && (
+          <TextError>{errors.password?.message}</TextError>
+        )}
+        <Input
+          {...register("repeatPassword", {
+            validate: (value, formValues) => {
+              if (value === formValues.password) {
+                return true;
+              }
+              return "Hasła muszą być takie same.";
+            },
+          })}
+          label="Powtórz hasło"
+          variant="outlined"
+          type="password"
+        />
+        {errors.repeatPassword?.message && (
+          <TextError>{errors.repeatPassword?.message}</TextError>
+        )}
+        <DarkButton type="submit">Zarejestruj się</DarkButton>
+        <LightButton onClick={() => navigate("/")}>
+          Kontunuuj bez rejestracji
+        </LightButton>
+      </form>
     </MainContent>
   );
 };
