@@ -47,12 +47,12 @@ export const RegisterPage = () => {
         <Input
           {...register("password", {
             required:
-              "Hasło musi mieć długość przynajmniej 8 znaków i musi zawierać przynajmniej jedną duzą literę, liczbę oraz znak specjalny.",
+              "Hasło musi mieć długość przynajmniej 8 znaków i musi zawierać przynajmniej jedną dużą literę, liczbę oraz znak specjalny.",
             pattern: {
               value:
                 /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/,
               message:
-                "Hasło musi mieć długość przynajmniej 8 znaków i musi zawierać przynajmniej jedną duzą literę, liczbę oraz znak specjalny.",
+                "Hasło musi mieć długość przynajmniej 8 znaków i musi zawierać przynajmniej jedną dużą literę, liczbę oraz znak specjalny.",
             },
           })}
           label="Hasło"
