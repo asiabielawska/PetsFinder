@@ -9,13 +9,16 @@ export const ReturnButton = styled("button")({
   left: 10,
 });
 
-export const Liked = styled("button")({
+export const Liked = styled("button", {
+  shouldForwardProp: (propName) => propName !== "isPetLiked",
+})<{ isPetLiked: boolean }>((props) => ({
   background: "none",
   border: "none",
   position: "absolute",
   top: 10,
   right: 10,
-});
+  color: props.isPetLiked ? "red" : "grey",
+}));
 
 export const PetProfileImg = styled("img")({
   height: 300,

@@ -19,18 +19,20 @@ import {
 } from "../common/PhotoAndUserName/styled";
 import { MainContent } from "../../styled";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const PetProfile = () => {
   const navigate = useNavigate();
+  const [isLiked, setIsLiked] = useState(false);
   return (
     <>
       <ReturnButton onClick={() => navigate("/")}>
         <ArrowBackIcon />
       </ReturnButton>
-      <Liked>
-        <FavoriteBorderIcon />
+      <Liked onClick={() => setIsLiked((prev) => !prev)} isPetLiked={isLiked}>
+        <FavoriteIcon />
       </Liked>
       <PetProfileImg src={koteczek} />
       <MainContent>
