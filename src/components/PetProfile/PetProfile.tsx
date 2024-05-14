@@ -21,17 +21,20 @@ import { MainContent } from "../../styled";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { likePost, selectLiked } from "../../userState/userState";
 
 export const PetProfile = () => {
   const navigate = useNavigate();
-  const [isLiked, setIsLiked] = useState(false);
+  const dispatch = useDispatch();
+  const isLiked = useSelector(selectLiked);
+
   return (
     <>
       <ReturnButton onClick={() => navigate("/")}>
         <ArrowBackIcon />
       </ReturnButton>
-      <Liked onClick={() => setIsLiked((prev) => !prev)} isPetLiked={isLiked}>
+      <Liked onClick={() => dispatch(likePost())} isPetLiked={isLiked}>
         <FavoriteIcon />
       </Liked>
       <PetProfileImg src={koteczek} />
