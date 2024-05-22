@@ -9,7 +9,7 @@ import koteczek from "../../assets/kotek.webp";
 import { Heading } from "../../styled";
 import { PhotoAndUserName } from "../common/PhotoAndUserName/PhotoAndUserName";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../userState/userState";
+import { selectUser } from "../../Slices/userState/userState";
 import { useEffect } from "react";
 
 const mockPets = [

@@ -11,7 +11,7 @@ import {
 } from "../styled";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../userState/userState";
+import { loginUser } from "../../Slices/userState/userState";
 import { useForm } from "react-hook-form";
 
 export const RegisterPage = () => {

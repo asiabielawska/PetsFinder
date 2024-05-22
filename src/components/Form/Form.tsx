@@ -15,7 +15,7 @@ import { useAnnouncementForm } from "./Hooks/useAnnouncementForm";
 import { MockAnnouncement } from "./Hooks/useAnnouncementForm";
 import { advertisementDatabase } from "../announcementDatabase";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../userState/userState";
+import { selectUser } from "../../Slices/userState/userState";
 
 export const Form = () => {
   const [newAnnouncement, setNewAnnouncement] = useAnnouncementForm();

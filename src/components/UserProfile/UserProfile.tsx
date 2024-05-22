@@ -11,7 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { Edit } from "./styled";
 import { advertisementDatabase } from "../announcementDatabase";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../userState/userState";
+import { selectUser } from "../../Slices/userState/userState";
 import { useEffect } from "react";
 
 export const UserProfile = () => {

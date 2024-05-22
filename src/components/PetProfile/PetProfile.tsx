@@ -22,7 +22,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { likePost, selectLiked } from "../../userState/userState";
+import { likePost, selectLiked } from "../../Slices/userState/userState";
 
 export const PetProfile = () => {
   const navigate = useNavigate();

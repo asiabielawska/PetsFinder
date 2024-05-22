@@ -6,7 +6,7 @@ import { SearchEngine } from "./SearchEngine/SearchEngine";
 
 import { Heading, UserAndAddButton } from "../../styled";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../userState/userState";
+import { selectUser } from "../../Slices/userState/userState";
 
 export const HomePage = () => {
   const userLogged = useSelector(selectUser);
