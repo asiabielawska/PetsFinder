@@ -12,7 +12,7 @@ export type PostType = {
     color: string;
     createdBy: string;
     location: string;
-    date: string;
+    date: Date;
     description: string;
     type: PostsTypes;
   };

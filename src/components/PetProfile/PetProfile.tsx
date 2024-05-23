@@ -62,7 +62,7 @@ export const PetProfile = () => {
         </PhotoAndName>
         <DateAndLocation>
           <div>{post.details.location}</div>
-          <Date>{post.details.date}</Date>
+          <Date>{post.details.date.toLocaleDateString()}</Date>
         </DateAndLocation>
         <Description>{post.details.description}</Description>
       </MainContent>
