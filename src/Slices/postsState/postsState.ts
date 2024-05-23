@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import koteczek from "../../assets/kotek.webp";
+import { PostType } from "../../types/post";
 
 export const postsSlice = createSlice({
   name: "posts",
@@ -14,11 +15,11 @@ export const postsSlice = createSlice({
           color: "Brązowy",
           createdBy: "Nazwa uzytkownika",
           location: "Lokalizacja",
-          date: "",
+          date: "11.01.2024 r.",
           description:
             "Kotek znaleziony dnia 11.01.2024 r. przy galerii w okolicy centrum. Aktualnie jest u mnie w domu.",
         },
-        id: "",
+        id: "Nazwa uzytkownika1",
         isLiked: false,
       },
     ],
@@ -30,11 +31,8 @@ export const postsSlice = createSlice({
   },
 });
 
-export const selectLiked = (state: {
-  posts: { posts: [{ isLiked: boolean }] };
-}) => state.posts.posts[0].isLiked;
-
-console.log(selectLiked);
+export const selectPost = (state: { posts: { posts: PostType[] } }) =>
+  state.posts.posts[0];
 
 export const { likePost } = postsSlice.actions;
 
