@@ -8,7 +8,7 @@ type Props = {
   label: string;
   options: string[];
   value: string;
-  onChange: (el: string) => void;
+  onChange: (el: any) => void;
 };
 
 export const BasicSelect = ({ label, options, value, onChange }: Props) => {

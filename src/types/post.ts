@@ -1,6 +1,10 @@
-enum PostsTypes {
-  Lost,
-  Found,
+import dayjs from "dayjs";
+
+export enum PostsTypes {
+  "Zgubiono" = "Zgubiono",
+  "Znaleziono" = "Znaleziono",
+  "Oddam" = "Oddam",
+  "Szukam" = "Szukam",
 }
 
 export type PostType = {
@@ -12,12 +16,10 @@ export type PostType = {
     color: string;
     createdBy: string;
     location: string;
-    date: Date;
+    date: dayjs.Dayjs;
     description: string;
     type: PostsTypes;
   };
   id: string;
   isLiked: boolean;
 };
-
-console.log(PostsTypes.Found);

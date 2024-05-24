@@ -12,16 +12,17 @@ import { useEffect, useRef } from "react";
 import { BasicSelect } from "../../components/BasicSelect/BasicSelect";
 import { mockForm } from "./constants";
 import { useAnnouncementForm } from "./Hooks/useAnnouncementForm";
-import { MockAnnouncement } from "./Hooks/useAnnouncementForm";
-import { advertisementDatabase } from "../announcementDatabase";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../Slices/userState/userState";
+import { addNewAnnoucement } from "../../Slices/postsState/postsState";
+import { PostsTypes } from "../../types/post";
 
 export const Form = () => {
   const [newAnnouncement, setNewAnnouncement] = useAnnouncementForm();
   const navigate = useNavigate();
   const ref = useRef<HTMLInputElement | null>(null);
   const userLogged = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (userLogged === false) {
@@ -36,26 +37,35 @@ export const Form = () => {
         <BasicSelect
           label={"Typ zgłoszenia*"}
           options={["Zgubiono", "Znaleziono", "Oddam", "Szukam"]}
-          value={newAnnouncement.type}
-          onChange={(newValue: string) => {
-            setNewAnnouncement((prev) => ({ ...prev, type: newValue }));
+          value={newAnnouncement.details.type}
+          onChange={(newValue: PostsTypes) => {
+            setNewAnnouncement((prev) => ({
+              ...prev,
+              details: { ...prev.details, type: newValue },
+            }));
           }}
         />
         <BasicSelect
           label={"Zwierzę*"}
           options={["Piesek", "Kotek", "Ptak", "Inne"]}
-          value={newAnnouncement.animal}
+          value={newAnnouncement.details.animal}
           onChange={(newValue: string) => {
-            setNewAnnouncement((prev) => ({ ...prev, animal: newValue }));
+            setNewAnnouncement((prev) => ({
+              ...prev,
+              details: { ...prev.details, animal: newValue },
+            }));
           }}
         />
-        <BasicDatePicker value={newAnnouncement.date} />
+        <BasicDatePicker value={newAnnouncement.details.date} />
         <BasicSelect
           label={"Płeć"}
           options={["Ona", "On", "Nie wiem"]}
-          value={newAnnouncement.gender}
+          value={newAnnouncement.details.gender}
           onChange={(newValue: string) => {
-            setNewAnnouncement((prev) => ({ ...prev, gender: newValue }));
+            setNewAnnouncement((prev) => ({
+              ...prev,
+              details: { ...prev.details, gender: newValue },
+            }));
           }}
         />
         {mockForm.map(({ id, label, multiline, rows }) => (
@@ -66,10 +76,12 @@ export const Form = () => {
             variant="outlined"
             multiline={multiline}
             rows={rows}
-            value={newAnnouncement[id as keyof MockAnnouncement]}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const newValue = event.target.value as string;
-              setNewAnnouncement((prev) => ({ ...prev, [id]: newValue }));
+              setNewAnnouncement((prev) => ({
+                ...prev,
+                details: { ...prev.details, [id]: newValue },
+              }));
             }}
           />
         ))}
@@ -104,11 +116,7 @@ export const Form = () => {
           </WhiteBackgroundButton>
           <BrownBackgroundButton
             onClick={() => {
-              advertisementDatabase.push({
-                ...newAnnouncement,
-                id: advertisementDatabase.length,
-              });
-              navigate("/");
+              dispatch(addNewAnnoucement(newAnnouncement)), navigate("/");
             }}
           >
             Dodaj ogłoszenie
