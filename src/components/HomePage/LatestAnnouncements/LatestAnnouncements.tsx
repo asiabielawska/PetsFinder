@@ -4,43 +4,22 @@ import {
   AnnouncementImg,
   AnnouncementText,
 } from "./styled";
-import koteczek from "../../../assets/kotek.webp";
 import { useNavigate } from "react-router-dom";
-
-const mockPets = [
-  {
-    petImg: koteczek,
-    petText: { animal: "Kotek", age: "2 lata", gender: "Ona" },
-    id: 1,
-  },
-  {
-    petImg: koteczek,
-    petText: { animal: "Kotek", age: "5 lat", gender: "On" },
-    id: 2,
-  },
-  {
-    petImg: koteczek,
-    petText: { animal: "Kotek", age: "3 miesiące", gender: "Ona" },
-    id: 3,
-  },
-  {
-    petImg: koteczek,
-    petText: { animal: "Kotek", age: "tydzień", gender: "Ona" },
-    id: 4,
-  },
-];
+import { useSelector } from "react-redux";
+import { selectDescendingPosts } from "../../../Slices/postsState/postsState";
 
 export const LatestAnnouncements = () => {
   const navigate = useNavigate();
+  const posts = useSelector(selectDescendingPosts);
   return (
     <>
-      {mockPets.map(({ petImg, petText, id }) => (
-        <Announcement onClick={() => navigate("/pet-profile")} key={id}>
-          <AnnouncementImg src={petImg} />
+      {posts.map((post) => (
+        <Announcement onClick={() => navigate("/pet-profile")} key={post.id}>
+          <AnnouncementImg src={post.img} />
           <AnnouncementText>
-            <Animal>{petText.animal}</Animal>
-            <div>{petText.gender}</div>
-            <div>{petText.age}</div>
+            <Animal>{post.details.animal}</Animal>
+            <div>{post.details.gender}</div>
+            <div>{post.details.age}</div>
           </AnnouncementText>
         </Announcement>
       ))}
