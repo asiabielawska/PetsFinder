@@ -30,20 +30,19 @@ export const UserProfile = () => {
       <PhotoAndUserName />
       <Heading>Ostatnio dodane</Heading>
 
-      {userPosts &&
-        userPosts.map(({ img, details, id }) => (
-          <Announcement onClick={() => navigate("/pet-profile")} key={id}>
-            <AnnouncementImg src={img} />
-            <AnnouncementText>
-              <Animal>{details.animal}</Animal>
-              <div>{details.gender}</div>
-              <div>{details.age}</div>
-            </AnnouncementText>
-            <Edit>
-              <EditIcon />
-            </Edit>
-          </Announcement>
-        ))}
+      {userPosts.map(({ img, details, id }) => (
+        <Announcement onClick={() => navigate("/pet-profile")} key={id}>
+          <AnnouncementImg src={img} />
+          <AnnouncementText>
+            <Animal>{details.animal}</Animal>
+            <div>{details.gender}</div>
+            <div>{details.age}</div>
+          </AnnouncementText>
+          <Edit>
+            <EditIcon />
+          </Edit>
+        </Announcement>
+      ))}
     </>
   );
 };

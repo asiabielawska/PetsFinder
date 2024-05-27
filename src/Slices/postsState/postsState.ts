@@ -85,7 +85,6 @@ export const postsSlice = createSlice({
       state.posts[0].isLiked = !state.posts[0].isLiked;
     },
     addNewAnnoucement: (state, action: { payload: PostType }) => {
-      console.log(state, action.payload);
       state.posts.push(action.payload);
     },
   },
