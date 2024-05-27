@@ -20,7 +20,7 @@ const initialState: { posts: PostType[] } = {
         date: dayjs("2023-12-11"),
         description:
           "Kotek znaleziony dnia 11.12.2023r. przy galerii w okolicy centrum. Aktualnie jest u mnie w domu.",
-        type: PostsTypes.Oddam,
+        type: PostsTypes.Znaleziono,
       },
       id: "Nazwa uzytkownika1",
       isLiked: false,
@@ -36,7 +36,7 @@ const initialState: { posts: PostType[] } = {
         location: "Lokalizacja",
         date: dayjs("2024-01-12"),
         description: "Piesek pląta się po ulicy od 2 dni.",
-        type: PostsTypes.Szukam,
+        type: PostsTypes.Znaleziono,
       },
       id: "Nazwa uzytkownika2",
       isLiked: false,
@@ -50,7 +50,7 @@ const initialState: { posts: PostType[] } = {
         color: "Brązowo-biały",
         createdBy: "Nazwa uzytkownika",
         location: "Lokalizacja",
-        date: dayjs("2024-06-05"),
+        date: dayjs("2024-05-27"),
         description: "Szukam pieska, wymknął się przez otwarte drzwi.",
         type: PostsTypes.Zgubiono,
       },
@@ -100,6 +100,15 @@ export const selectDescendingPosts = (state: {
   const table = [...state.posts.posts];
   return table.sort(
     (post1, post2) => post2.details.date.unix() - post1.details.date.unix()
+  );
+};
+
+export const selectUserPosts = (state: {
+  posts: { posts: PostType[] };
+  user: { userId: string };
+}) => {
+  return state.posts.posts.filter(
+    (post) => post.details.createdBy === state.user.userId
   );
 };
 

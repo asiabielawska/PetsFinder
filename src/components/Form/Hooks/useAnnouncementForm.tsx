@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { PostType, PostsTypes } from "../../../types/post";
 import dayjs from "dayjs";
+import { useSelector } from "react-redux";
+import { selectUserId } from "../../../Slices/userState/userState";
 
 export const useAnnouncementForm = () => {
+  const userId = useSelector(selectUserId);
   const [newAnnouncement, setNewAnnouncement] = useState<PostType>({
     img: ``,
     details: {
@@ -10,7 +13,7 @@ export const useAnnouncementForm = () => {
       age: "",
       gender: "",
       color: "",
-      createdBy: "",
+      createdBy: userId,
       location: "",
       date: dayjs(),
       description: "",
