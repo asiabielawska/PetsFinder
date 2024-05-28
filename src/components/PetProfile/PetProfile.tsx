@@ -19,14 +19,23 @@ import {
 import { MainContent } from "../../styled";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, selectPost } from "../../Slices/postsState/postsState";
 
 export const PetProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const post = useSelector(selectPost);
+  const posts = useSelector(selectPost);
+  const [searchParams] = useSearchParams();
+  const postId = searchParams.get("postId");
+  if (postId === null) {
+    return "No post ID";
+  }
+  const post = posts.find((element) => element.id === postId);
+  if (post === undefined) {
+    return "This post doesn't exist";
+  }
 
   return (
     <>
@@ -62,7 +71,7 @@ export const PetProfile = () => {
         </PhotoAndName>
         <DateAndLocation>
           <div>{post.details.location}</div>
-          <Date>{post.details.date.toLocaleDateString()}</Date>
+          <Date>{post.details.date.format("DD/MM/YYYY")}</Date>
         </DateAndLocation>
         <Description>{post.details.description}</Description>
       </MainContent>

@@ -22,7 +22,7 @@ const initialState: { posts: PostType[] } = {
           "Kotek znaleziony dnia 11.12.2023r. przy galerii w okolicy centrum. Aktualnie jest u mnie w domu.",
         type: PostsTypes.Znaleziono,
       },
-      id: "Nazwa uzytkownika1",
+      id: "111",
       isLiked: false,
     },
     {
@@ -38,7 +38,7 @@ const initialState: { posts: PostType[] } = {
         description: "Piesek pląta się po ulicy od 2 dni.",
         type: PostsTypes.Znaleziono,
       },
-      id: "Nazwa uzytkownika2",
+      id: "222",
       isLiked: false,
     },
     {
@@ -54,7 +54,7 @@ const initialState: { posts: PostType[] } = {
         description: "Szukam pieska, wymknął się przez otwarte drzwi.",
         type: PostsTypes.Zgubiono,
       },
-      id: "Nazwa uzytkownika3",
+      id: "333",
       isLiked: false,
     },
     {
@@ -71,7 +71,7 @@ const initialState: { posts: PostType[] } = {
           "Kotek od paru dni przychodzi do ogrodu, nie zgubił się komuś?",
         type: PostsTypes.Znaleziono,
       },
-      id: "Nazwa uzytkownika4",
+      id: "444",
       isLiked: false,
     },
   ],
@@ -91,7 +91,7 @@ export const postsSlice = createSlice({
 });
 
 export const selectPost = (state: { posts: { posts: PostType[] } }) =>
-  state.posts.posts[0];
+  state.posts.posts;
 
 export const selectDescendingPosts = (state: {
   posts: { posts: PostType[] };

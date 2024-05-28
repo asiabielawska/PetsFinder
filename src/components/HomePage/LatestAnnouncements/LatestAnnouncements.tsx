@@ -14,7 +14,10 @@ export const LatestAnnouncements = () => {
   return (
     <>
       {posts.map((post) => (
-        <Announcement onClick={() => navigate("/pet-profile")} key={post.id}>
+        <Announcement
+          onClick={() => navigate(`/pet-profile?postId=${post.id}`)}
+          key={post.id}
+        >
           <AnnouncementImg src={post.img} />
           <AnnouncementText>
             <Animal>{post.details.animal}</Animal>
