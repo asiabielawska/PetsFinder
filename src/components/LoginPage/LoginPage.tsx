@@ -25,7 +25,7 @@ export const LoginPage = () => {
   const [password, setPassword] = useState<string | undefined>(undefined);
   const login = () => {
     if (email === mockUser.login && password === mockUser.password) {
-      dispatch(loginUser(login));
+      dispatch(loginUser(mockUser.login));
       navigate("/");
     }
   };
