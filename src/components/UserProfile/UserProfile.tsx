@@ -31,7 +31,10 @@ export const UserProfile = () => {
       <Heading>Ostatnio dodane</Heading>
 
       {userPosts.map(({ img, details, id }) => (
-        <Announcement onClick={() => navigate("/pet-profile")} key={id}>
+        <Announcement
+          onClick={() => navigate(`/pet-profile?postId=${id}`)}
+          key={id}
+        >
           <AnnouncementImg src={img} />
           <AnnouncementText>
             <Animal>{details.animal}</Animal>
