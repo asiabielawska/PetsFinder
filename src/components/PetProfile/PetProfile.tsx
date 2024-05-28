@@ -23,10 +23,12 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, selectPost } from "../../Slices/postsState/postsState";
 import dayjs from "dayjs";
+import { selectUser } from "../../Slices/userState/userState";
 
 export const PetProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loginUser = useSelector(selectUser);
   const posts = useSelector(selectPost);
   const [searchParams] = useSearchParams();
   const postId = searchParams.get("postId");
@@ -43,12 +45,15 @@ export const PetProfile = () => {
       <ReturnButton onClick={() => navigate("/")}>
         <ArrowBackIcon />
       </ReturnButton>
-      <Liked
-        onClick={() => dispatch(likePost(post.id))}
-        isPetLiked={post.isLiked}
-      >
-        <FavoriteIcon />
-      </Liked>
+      {loginUser && (
+        <Liked
+          onClick={() => dispatch(likePost(post.id))}
+          isPetLiked={post.isLiked}
+        >
+          <FavoriteIcon />
+        </Liked>
+      )}
+
       <PetProfileImg src={post.img} />
       <MainContent>
         <PetDetails>

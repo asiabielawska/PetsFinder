@@ -21,11 +21,14 @@ export const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<{
     password: string;
     email: string;
     repeatPassword: string;
+    userName: string;
   }>();
+  const userName = watch("userName");
 
   return (
     <MainContent>
@@ -35,7 +38,7 @@ export const RegisterPage = () => {
       </IconContainer>
       <form
         onSubmit={handleSubmit(() => {
-          dispatch(loginUser());
+          dispatch(loginUser(userName));
           navigate("/");
         })}
       >
@@ -78,6 +81,11 @@ export const RegisterPage = () => {
         {errors.repeatPassword?.message && (
           <TextError>{errors.repeatPassword?.message}</TextError>
         )}
+        <Input
+          {...register("userName", { required: "To pole jest wymagane" })}
+          label="Nazwa użytkownika"
+          variant="outlined"
+        />
         <DarkButton type="submit">Zarejestruj się</DarkButton>
         <LightButton onClick={() => navigate("/")}>
           Kontunuuj bez rejestracji

@@ -25,13 +25,13 @@ export const LoginPage = () => {
   const [password, setPassword] = useState<string | undefined>(undefined);
   const login = () => {
     if (email === mockUser.login && password === mockUser.password) {
-      dispatch(loginUser());
+      dispatch(loginUser(login));
       navigate("/");
     }
   };
   return (
     <MainContent>
-      <LoginHeading>Witaj ponownie!</LoginHeading>
+      <LoginHeading>Witaj!</LoginHeading>
       <IconContainer>
         <Icon icon={faPaw}></Icon>
       </IconContainer>
