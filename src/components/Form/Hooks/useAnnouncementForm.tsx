@@ -19,7 +19,7 @@ export const useAnnouncementForm = () => {
       description: "",
       type: PostsTypes.Szukam,
     },
-    id: "",
+    id: Date.now().toString(),
     isLiked: false,
   });
   return [newAnnouncement, setNewAnnouncement] as const;
