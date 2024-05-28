@@ -23,7 +23,7 @@ export const Liked = styled("button", {
 export const PetProfileImg = styled("img")({
   height: 300,
   width: "100%",
-  objectFit: "contain",
+  objectFit: "cover",
 });
 
 export const PetDetails = styled("div")((props) => ({

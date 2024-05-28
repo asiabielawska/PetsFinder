@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Heading, MainContent } from "../../styled";
 import {
   AddImg,
+  AddedImg,
   BrownBackgroundButton,
   FormTextField,
   TwoButtons,
@@ -108,7 +109,7 @@ export const Form = () => {
         >
           Dodaj zdjęcie
         </AddImg>
-        {newAnnouncement.img && <img src={newAnnouncement.img} />}
+        {newAnnouncement.img && <AddedImg src={newAnnouncement.img} />}
 
         <TwoButtons>
           <WhiteBackgroundButton onClick={() => navigate("/")}>
