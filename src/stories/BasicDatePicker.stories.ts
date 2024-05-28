@@ -10,7 +10,8 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    value: dayjs(),
+    value: dayjs().valueOf(),
+    onChange: () => {},
   },
 } satisfies Meta<typeof BasicDatePicker>;
 
