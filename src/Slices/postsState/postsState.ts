@@ -17,7 +17,7 @@ const initialState: { posts: PostType[] } = {
         color: "Czarny",
         createdBy: "JanKowalski",
         location: "Lokalizacja",
-        date: dayjs("2023-12-11"),
+        date: dayjs("2023-12-11").valueOf(),
         description:
           "Kotek znaleziony dnia 11.12.2023r. przy galerii w okolicy centrum. Aktualnie jest u mnie w domu.",
         type: PostsTypes.Znaleziono,
@@ -34,7 +34,7 @@ const initialState: { posts: PostType[] } = {
         color: "Bezowy",
         createdBy: "AlinaNowak",
         location: "Lokalizacja",
-        date: dayjs("2024-01-12"),
+        date: dayjs("2024-01-12").valueOf(),
         description: "Piesek pląta się po ulicy od 2 dni.",
         type: PostsTypes.Znaleziono,
       },
@@ -50,7 +50,7 @@ const initialState: { posts: PostType[] } = {
         color: "Brązowo-biały",
         createdBy: "PaulinaKowalska",
         location: "Lokalizacja",
-        date: dayjs("2024-05-27"),
+        date: dayjs("2024-05-27").valueOf(),
         description: "Szukam pieska, wymknął się przez otwarte drzwi.",
         type: PostsTypes.Zgubiono,
       },
@@ -66,7 +66,7 @@ const initialState: { posts: PostType[] } = {
         color: "Bury",
         createdBy: "WłodekNowak",
         location: "Lokalizacja",
-        date: dayjs("2024-05-16"),
+        date: dayjs("2024-05-16").valueOf(),
         description:
           "Kotek od paru dni przychodzi do ogrodu, nie zgubił się komuś?",
         type: PostsTypes.Znaleziono,
@@ -81,8 +81,12 @@ export const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    likePost: (state) => {
-      state.posts[0].isLiked = !state.posts[0].isLiked;
+    likePost: (state, action) => {
+      state.posts.forEach((post) => {
+        if (post.id === action.payload) {
+          post.isLiked = !post.isLiked;
+        }
+      });
     },
     addNewAnnoucement: (state, action: { payload: PostType }) => {
       state.posts.push(action.payload);
@@ -97,9 +101,7 @@ export const selectDescendingPosts = (state: {
   posts: { posts: PostType[] };
 }) => {
   const table = [...state.posts.posts];
-  return table.sort(
-    (post1, post2) => post2.details.date.unix() - post1.details.date.unix()
-  );
+  return table.sort((post1, post2) => post2.details.date - post1.details.date);
 };
 
 export const selectUserPosts = (state: {
@@ -109,6 +111,10 @@ export const selectUserPosts = (state: {
   return state.posts.posts.filter(
     (post) => post.details.createdBy === state.user.userId
   );
+};
+
+export const selectLikedPosts = (state: { posts: { posts: PostType[] } }) => {
+  return state.posts.posts.filter((post) => post.isLiked);
 };
 
 export const { likePost, addNewAnnoucement } = postsSlice.actions;

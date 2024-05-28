@@ -15,7 +15,7 @@ export const useAnnouncementForm = () => {
       color: "",
       createdBy: userId,
       location: "",
-      date: dayjs(),
+      date: dayjs().valueOf(),
       description: "",
       type: PostsTypes.Szukam,
     },

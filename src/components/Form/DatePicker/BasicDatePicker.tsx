@@ -4,14 +4,17 @@ import { DatePicker } from "./styled";
 import dayjs from "dayjs";
 
 type Props = {
-  value: dayjs.Dayjs;
+  value: number;
+  onChange: (val: dayjs.Dayjs) => void;
 };
 
-export const BasicDatePicker = ({ value }: Props) => {
+export const BasicDatePicker = ({ value, onChange }: Props) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        value={value}
+        value={dayjs(value)}
+        // @ts-ignore
+        onChange={onChange}
         label="Data*"
         format="DD-MM-YYYY"
         slotProps={{

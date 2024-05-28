@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../Slices/userState/userState";
 import { addNewAnnoucement } from "../../Slices/postsState/postsState";
 import { PostsTypes } from "../../types/post";
+import dayjs from "dayjs";
 
 export const Form = () => {
   const [newAnnouncement, setNewAnnouncement] = useAnnouncementForm();
@@ -57,7 +58,15 @@ export const Form = () => {
             }));
           }}
         />
-        <BasicDatePicker value={newAnnouncement.details.date} />
+        <BasicDatePicker
+          value={newAnnouncement.details.date}
+          onChange={(newValue: dayjs.Dayjs) => {
+            setNewAnnouncement((prev) => ({
+              ...prev,
+              details: { ...prev.details, date: newValue.valueOf() },
+            }));
+          }}
+        />
         <BasicSelect
           label={"Płeć"}
           options={["Ona", "On", "Nie wiem"]}

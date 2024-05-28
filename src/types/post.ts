@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-
 export enum PostsTypes {
   "Zgubiono" = "Zgubiono",
   "Znaleziono" = "Znaleziono",
@@ -16,7 +14,7 @@ export type PostType = {
     color: string;
     createdBy: string;
     location: string;
-    date: dayjs.Dayjs;
+    date: number;
     description: string;
     type: PostsTypes;
   };

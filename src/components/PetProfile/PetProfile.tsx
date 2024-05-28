@@ -22,6 +22,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, selectPost } from "../../Slices/postsState/postsState";
+import dayjs from "dayjs";
 
 export const PetProfile = () => {
   const navigate = useNavigate();
@@ -42,7 +43,10 @@ export const PetProfile = () => {
       <ReturnButton onClick={() => navigate("/")}>
         <ArrowBackIcon />
       </ReturnButton>
-      <Liked onClick={() => dispatch(likePost())} isPetLiked={post.isLiked}>
+      <Liked
+        onClick={() => dispatch(likePost(post.id))}
+        isPetLiked={post.isLiked}
+      >
         <FavoriteIcon />
       </Liked>
       <PetProfileImg src={post.img} />
@@ -71,7 +75,7 @@ export const PetProfile = () => {
         </PhotoAndName>
         <DateAndLocation>
           <div>{post.details.location}</div>
-          <Date>{post.details.date.format("DD/MM/YYYY")}</Date>
+          <Date>{dayjs(post.details.date).format("DD/MM/YYYY")}</Date>
         </DateAndLocation>
         <Description>{post.details.description}</Description>
       </MainContent>
