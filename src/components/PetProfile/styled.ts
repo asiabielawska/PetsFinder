@@ -7,6 +7,7 @@ export const ReturnButton = styled("button")({
   position: "absolute",
   top: 10,
   left: 10,
+  display: "flex",
 });
 
 export const Liked = styled("button", {
