@@ -41,7 +41,12 @@ export const UserProfile = () => {
             <div>{details.gender}</div>
             <div>{details.age}</div>
           </AnnouncementText>
-          <Edit>
+          <Edit
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/form?postId=${id}`);
+            }}
+          >
             <EditIcon />
           </Edit>
         </Announcement>

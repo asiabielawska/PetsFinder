@@ -91,6 +91,14 @@ export const postsSlice = createSlice({
     addNewAnnoucement: (state, action: { payload: PostType }) => {
       state.posts.push(action.payload);
     },
+    editAnnoucement: (state, action: { payload: PostType }) => {
+      const post = state.posts.find((post) => post.id === action.payload.id);
+      if (post) {
+        post.details = action.payload.details;
+        post.img = action.payload.img;
+        post.isLiked = action.payload.isLiked;
+      }
+    },
   },
 });
 
@@ -117,6 +125,7 @@ export const selectLikedPosts = (state: { posts: { posts: PostType[] } }) => {
   return state.posts.posts.filter((post) => post.isLiked);
 };
 
-export const { likePost, addNewAnnoucement } = postsSlice.actions;
+export const { likePost, addNewAnnoucement, editAnnoucement } =
+  postsSlice.actions;
 
 export default postsSlice.reducer;

@@ -15,12 +15,15 @@ import { mockForm } from "./constants";
 import { useAnnouncementForm } from "./Hooks/useAnnouncementForm";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../Slices/userState/userState";
-import { addNewAnnoucement } from "../../Slices/postsState/postsState";
+import {
+  addNewAnnoucement,
+  editAnnoucement,
+} from "../../Slices/postsState/postsState";
 import { PostsTypes } from "../../types/post";
 import dayjs from "dayjs";
 
 export const Form = () => {
-  const [newAnnouncement, setNewAnnouncement] = useAnnouncementForm();
+  const [newAnnouncement, setNewAnnouncement, isEdit] = useAnnouncementForm();
   const navigate = useNavigate();
   const ref = useRef<HTMLInputElement | null>(null);
   const userLogged = useSelector(selectUser);
@@ -124,13 +127,23 @@ export const Form = () => {
           <WhiteBackgroundButton onClick={() => navigate("/")}>
             Cofnij
           </WhiteBackgroundButton>
-          <BrownBackgroundButton
-            onClick={() => {
-              dispatch(addNewAnnoucement(newAnnouncement)), navigate("/");
-            }}
-          >
-            Dodaj ogłoszenie
-          </BrownBackgroundButton>
+          {isEdit ? (
+            <BrownBackgroundButton
+              onClick={() => {
+                dispatch(editAnnoucement(newAnnouncement)), navigate("/");
+              }}
+            >
+              Zapisz zmiany
+            </BrownBackgroundButton>
+          ) : (
+            <BrownBackgroundButton
+              onClick={() => {
+                dispatch(addNewAnnoucement(newAnnouncement)), navigate("/");
+              }}
+            >
+              Dodaj ogłoszenie
+            </BrownBackgroundButton>
+          )}
         </TwoButtons>
       </MainContent>
     </>
