@@ -1,5 +1,5 @@
 export const mockForm = [
-  { id: "city", label: "Miejscowość*" },
+  { id: "location", label: "Miejscowość*" },
   { id: "age", label: "Wiek" },
   { id: "color", label: "Kolor" },
   { id: "race", label: "Rasa" },

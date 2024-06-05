@@ -6,7 +6,6 @@ import {
   BrownBackgroundButton,
   Content,
   FormTextField,
-  Select,
   TwoButtons,
   WhiteBackgroundButton,
 } from "./styled";
@@ -23,6 +22,7 @@ import {
 import { PostType, PostsTypes } from "../../types/post";
 import dayjs from "dayjs";
 import { useForm } from "react-hook-form";
+import { BasicSelect } from "../BasicSelect/BasicSelect";
 
 export const Form = () => {
   const [searchParams] = useSearchParams();
@@ -76,51 +76,45 @@ export const Form = () => {
             dispatch(addNewAnnoucement(data)), navigate("/");
           })}
         >
-          <Select
-            {...register("details.type", { required: "To pole jest wymagane" })}
-            title="Typ zgłoszenia"
-          >
-            <option value={"Zgubiono"}>Zgubiono</option>
-            <option value={"Znaleziono"}>Znaleziono</option>
-            <option value={"Oddam"}>Oddam</option>
-            <option value={"Szukam"}>Szukam</option>
-          </Select>
-          <Select
-            {...register("details.animal", {
-              required: "To pole jest wymagane",
-            })}
-            title="Zwierzę"
-          >
-            <option value={"Pies"}>Piesek</option>
-            <option value={"Kot"}>Kotek</option>
-            <option value={"Ptak"}>Ptak</option>
-            <option value={"Inne"}>Inne</option>
-          </Select>
+          <BasicSelect
+            label={"Typ zgłoszenia"}
+            options={["Zgubiono", "Znaleziono", "Oddam", "Szukam"]}
+            value={watch("details.type")}
+            onChange={(newValue: PostsTypes) => {
+              setValue("details.type", newValue);
+            }}
+          />
+          <BasicSelect
+            label={"Zwierzę"}
+            options={["Kotek", "Piesek", "Ptak", "Inne"]}
+            value={watch("details.animal")}
+            onChange={(newValue: PostsTypes) => {
+              setValue("details.animal", newValue);
+            }}
+          />
           <BasicDatePicker
             value={watch("details.date")}
             onChange={(newValue: dayjs.Dayjs) => {
               setValue("details.date", newValue.valueOf());
             }}
           />
-          <Select
-            {...register("details.gender", {
-              required: "To pole jest wymagane",
-            })}
-            title="Płeć"
-          >
-            <option>Ona</option>
-            <option>On</option>
-            <option>Nie wiem</option>
-          </Select>
+          <BasicSelect
+            label={"Płeć"}
+            options={["On", "Ona", "Nie wiem"]}
+            value={watch("details.gender")}
+            onChange={(newValue: PostsTypes) => {
+              setValue("details.gender", newValue);
+            }}
+          />
           {mockForm.map(({ id, label, multiline, rows }) => (
             <FormTextField
               key={id}
               id={id}
+              label={label}
               variant="outlined"
               multiline={multiline}
               rows={rows}
               {...register(`details.${id as keyof PostType["details"]}`)}
-              title={label}
             />
           ))}
 
