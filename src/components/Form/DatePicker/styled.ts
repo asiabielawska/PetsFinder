@@ -3,6 +3,7 @@ import { DesktopDatePicker } from "@mui/x-date-pickers";
 
 export const DatePicker = styled(DesktopDatePicker)({
   marginTop: 15,
+  width: "100%",
   ".MuiFormControl-root": {
     borderRadius: 30,
     border: "1px solid #917B60",
