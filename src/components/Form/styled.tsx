@@ -88,4 +88,5 @@ export const AddImg = styled("button")((props) => ({
 export const AddedImg = styled("img")({
   borderRadius: 20,
   marginTop: 15,
+  maxWidth: "100%",
 });

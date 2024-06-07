@@ -4,7 +4,7 @@ export const mockForm = [
   { id: "color", label: "Kolor" },
   { id: "race", label: "Rasa" },
   {
-    id: "content",
+    id: "description",
     label: "Krótki opis zwierzęcia/sytuacji",
     multiline: true,
     rows: 4,
