@@ -76,7 +76,7 @@ export const PetProfile = () => {
         </PetDetails>
         <PhotoAndName>
           <UserImage></UserImage>
-          <UserName>{post.details.createdBy}</UserName>
+          <UserName>{post.details.userName}</UserName>
         </PhotoAndName>
         <DateAndLocation>
           <div>{post.details.location}</div>

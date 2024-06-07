@@ -13,7 +13,11 @@ import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
 import { useEffect, useRef } from "react";
 import { mockForm } from "./constants";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser, selectUserId } from "../../Slices/userState/userState";
+import {
+  selectUser,
+  selectUserId,
+  selectUserName,
+} from "../../Slices/userState/userState";
 import {
   addNewAnnoucement,
   editAnnoucement,
@@ -27,6 +31,7 @@ import { BasicSelect } from "../BasicSelect/BasicSelect";
 export const Form = () => {
   const [searchParams] = useSearchParams();
   const userPosts = useSelector(selectUserPosts);
+  const userName = useSelector(selectUserName);
   const postId = searchParams.get("postId");
   const post =
     postId === null
@@ -48,6 +53,7 @@ export const Form = () => {
         gender: post?.details?.gender ?? "",
         color: post?.details?.color ?? "",
         createdBy: post?.details?.createdBy ?? userId,
+        userName: post?.details?.createdBy ?? userName,
         location: post?.details?.location ?? "",
         date: post?.details?.date ?? dayjs().valueOf(),
         description: post?.details?.description ?? "",
@@ -70,10 +76,14 @@ export const Form = () => {
         <Heading>Dane</Heading>
         <form
           onSubmit={handleSubmit((data) => {
+            console.log(data);
             if (isEdit) {
-              dispatch(editAnnoucement(data)), navigate("/");
+              dispatch(editAnnoucement(data));
+              navigate("/");
+            } else {
+              dispatch(addNewAnnoucement(data));
+              navigate("/");
             }
-            dispatch(addNewAnnoucement(data)), navigate("/");
           })}
         >
           <BasicSelect
@@ -132,6 +142,7 @@ export const Form = () => {
             }}
           />
           <AddImg
+            type="button"
             onClick={() => {
               ref.current?.click();
             }}

@@ -16,6 +16,7 @@ const initialState: { posts: PostType[] } = {
         gender: "On",
         color: "Czarny",
         createdBy: "JanKowalski",
+        userName: "Jan Kowalski",
         location: "Lokalizacja",
         date: dayjs("2023-12-11").valueOf(),
         description:
@@ -33,6 +34,7 @@ const initialState: { posts: PostType[] } = {
         gender: "Ona",
         color: "Bezowy",
         createdBy: "AlinaNowak",
+        userName: "Alina Nowak",
         location: "Lokalizacja",
         date: dayjs("2024-01-12").valueOf(),
         description: "Piesek pląta się po ulicy od 2 dni.",
@@ -49,6 +51,7 @@ const initialState: { posts: PostType[] } = {
         gender: "Ona",
         color: "Brązowo-biały",
         createdBy: "PaulinaKowalska",
+        userName: "Paulina Kowalska",
         location: "Lokalizacja",
         date: dayjs("2024-05-27").valueOf(),
         description: "Szukam pieska, wymknął się przez otwarte drzwi.",
@@ -65,6 +68,7 @@ const initialState: { posts: PostType[] } = {
         gender: "On",
         color: "Bury",
         createdBy: "WłodekNowak",
+        userName: "Włodek Nowak",
         location: "Lokalizacja",
         date: dayjs("2024-05-16").valueOf(),
         description:
