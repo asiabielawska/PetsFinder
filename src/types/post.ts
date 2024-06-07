@@ -13,6 +13,7 @@ export type PostType = {
     gender: string;
     color: string;
     createdBy: string;
+    userName: string;
     location: string;
     date: number;
     description: string;

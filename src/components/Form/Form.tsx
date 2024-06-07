@@ -71,9 +71,11 @@ export const Form = () => {
         <form
           onSubmit={handleSubmit((data) => {
             if (isEdit) {
-              dispatch(editAnnoucement(data)), navigate("/");
+              dispatch(editAnnoucement(data));
+              navigate("/");
             }
-            dispatch(addNewAnnoucement(data)), navigate("/");
+            dispatch(addNewAnnoucement(data));
+            navigate("/");
           })}
         >
           <BasicSelect
@@ -132,6 +134,7 @@ export const Form = () => {
             }}
           />
           <AddImg
+            type="button"
             onClick={() => {
               ref.current?.click();
             }}

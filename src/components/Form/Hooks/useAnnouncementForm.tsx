@@ -2,13 +2,17 @@ import { useState } from "react";
 import { PostType, PostsTypes } from "../../../types/post";
 import dayjs from "dayjs";
 import { useSelector } from "react-redux";
-import { selectUserId } from "../../../Slices/userState/userState";
+import {
+  selectUserId,
+  selectUserName,
+} from "../../../Slices/userState/userState";
 import { useSearchParams } from "react-router-dom";
 import { selectUserPosts } from "../../../Slices/postsState/postsState";
 
 export const useAnnouncementForm = () => {
   const [searchParams] = useSearchParams();
   const userPosts = useSelector(selectUserPosts);
+  const userName = useSelector(selectUserName);
   const postId = searchParams.get("postId");
   const post =
     postId === null
@@ -23,6 +27,7 @@ export const useAnnouncementForm = () => {
       gender: post?.details?.gender ?? "",
       color: post?.details?.color ?? "",
       createdBy: post?.details?.createdBy ?? userId,
+      userName: post?.details?.userName ?? userName,
       location: post?.details?.location ?? "",
       date: post?.details?.date ?? dayjs().valueOf(),
       description: post?.details?.description ?? "",

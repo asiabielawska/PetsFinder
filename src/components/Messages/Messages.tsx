@@ -7,7 +7,7 @@ import {
 import { Heading } from "../../styled";
 import { Content, Message, NameAndContent } from "./styled";
 import { useSelector } from "react-redux";
-import { selectUserId } from "../../Slices/userState/userState";
+import { selectUserName } from "../../Slices/userState/userState";
 
 const mockMessages = [
   {
@@ -26,12 +26,14 @@ const mockMessages = [
 
 export const Messages = () => {
   const navigate = useNavigate();
-  const userId = useSelector(selectUserId);
+  const userName = useSelector(selectUserName);
   return (
     <>
       <PhotoAndName>
         <UserImage onClick={() => navigate("/user-profile")}></UserImage>
-        <UserName onClick={() => navigate("/user-profile")}>{userId}</UserName>
+        <UserName onClick={() => navigate("/user-profile")}>
+          {userName}
+        </UserName>
       </PhotoAndName>
       <Heading>Wiadomości</Heading>
       {mockMessages.map(({ userName, content }) => (
