@@ -14,6 +14,9 @@ export const userSlice = createSlice({
       state.userName = action.payload;
       state.userId = dayjs().valueOf();
     },
+    logOutUser: (state) => {
+      state.isLoggedIn = false;
+    },
   },
 });
 
@@ -26,6 +29,6 @@ export const selectUserName = (state: { user: { userName: string } }) =>
 export const selectUserId = (state: { user: { userId: string } }) =>
   state.user.userId;
 
-export const { loginUser } = userSlice.actions;
+export const { loginUser, logOutUser } = userSlice.actions;
 
 export default userSlice.reducer;
