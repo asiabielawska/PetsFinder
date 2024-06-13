@@ -7,7 +7,8 @@ import {
 import { Heading } from "../../styled";
 import { Content, Message, NameAndContent } from "./styled";
 import { useSelector } from "react-redux";
-import { selectUserName } from "../../Slices/userState/userState";
+import { selectUser, selectUserName } from "../../Slices/userState/userState";
+import { useEffect } from "react";
 
 const mockMessages = [
   {
@@ -25,6 +26,12 @@ const mockMessages = [
 ];
 
 export const Messages = () => {
+  const userLogged = useSelector(selectUser);
+  useEffect(() => {
+    if (userLogged === false) {
+      navigate("/login-page");
+    }
+  }, []);
   const navigate = useNavigate();
   const userName = useSelector(selectUserName);
   return (
