@@ -26,6 +26,7 @@ import dayjs from "dayjs";
 import { selectUser } from "../../Slices/userState/userState";
 
 export const PetProfile = () => {
+  const userLogged = useSelector(selectUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginUser = useSelector(selectUser);
@@ -58,20 +59,20 @@ export const PetProfile = () => {
       <MainContent>
         <PetDetails>
           <Category>
-            <div>Zwierzę</div>
-            <Detail>{post.details.animal}</Detail>
+            <div>Typ</div>
+            <Detail>{post.details.type}</Detail>
           </Category>
           <Category>
             <div>Wiek</div>
             <Detail>{post.details.age}</Detail>
           </Category>
           <Category>
-            <div>Płeć</div>
-            <Detail>{post.details.gender}</Detail>
+            <div>Zwierzę</div>
+            <Detail>{post.details.animal}</Detail>
           </Category>
           <Category>
-            <div>Kolor</div>
-            <Detail>{post.details.color}</Detail>
+            <div>Płeć</div>
+            <Detail>{post.details.gender}</Detail>
           </Category>
         </PetDetails>
         <PhotoAndName>
@@ -85,7 +86,17 @@ export const PetProfile = () => {
         <Description>{post.details.description}</Description>
       </MainContent>
       <Contact>
-        <Adopt>Napisz wiadomość</Adopt>
+        <Adopt
+          onClick={() => {
+            if (userLogged === false) {
+              navigate("/login-page");
+            } else {
+              navigate("/");
+            }
+          }}
+        >
+          Napisz wiadomość
+        </Adopt>
       </Contact>
     </>
   );
