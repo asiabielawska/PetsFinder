@@ -91,7 +91,7 @@ export const PetProfile = () => {
             if (userLogged === false) {
               navigate("/login-page");
             } else {
-              navigate("/");
+              navigate("/message");
             }
           }}
         >
