@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import store from "./store/store.ts";
 import { LoginPage } from "./components/LoginPage/LoginPage.tsx";
 import { RegisterPage } from "./components/RegisterPage/RegisterPage.tsx";
+import { Message } from "./components/Message/Message.tsx";
 
 const router = createHashRouter([
   {
@@ -56,6 +57,7 @@ const router = createHashRouter([
   },
   { path: "login-page", element: <LoginPage /> },
   { path: "register-page", element: <RegisterPage /> },
+  { path: "message", element: <Message /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
