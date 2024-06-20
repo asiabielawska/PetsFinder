@@ -6,9 +6,12 @@ import { SearchEngine } from "./SearchEngine/SearchEngine";
 import { Heading, UserAndAddButton } from "../../styled";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../Slices/userState/userState";
+import { useState } from "react";
 
 export const HomePage = () => {
   const userLogged = useSelector(selectUser);
+  const [filter, setFilter] = useState("");
+
   return (
     <>
       {userLogged && (
@@ -19,9 +22,9 @@ export const HomePage = () => {
       )}
       <SearchEngine />
       <Heading>Najczęstsze kategorie</Heading>
-      <MainCommonCategories />
+      <MainCommonCategories setFilter={setFilter} />
       <Heading>Najnowsze ogłoszenia</Heading>
-      <LatestAnnouncements />
+      <LatestAnnouncements filterValue={filter} />
     </>
   );
 };

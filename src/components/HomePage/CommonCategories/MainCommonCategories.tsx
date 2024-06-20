@@ -10,30 +10,34 @@ import { faDog } from "@fortawesome/free-solid-svg-icons";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
-export const MainCommonCategories = () => {
+type Props = {
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const MainCommonCategories = ({ setFilter }: Props) => {
   return (
     <>
       <CommonCategories>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("Kotek")}>
             <FontAwesomeIcon icon={faCat} />
           </CategoryButton>
           <div>Kotki</div>
         </Category>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("Piesek")}>
             <FontAwesomeIcon icon={faDog} />
           </CategoryButton>
           <div>Pieski</div>
         </Category>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("Inne")}>
             <FontAwesomeIcon icon={faPaw} />
           </CategoryButton>
           <div>Inne</div>
         </Category>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("")}>
             <FontAwesomeIcon icon={faBan} />
           </CategoryButton>
         </Category>
@@ -41,6 +45,8 @@ export const MainCommonCategories = () => {
       <div style={{ paddingTop: 10 }}>
         <LostFindButtons>Zgubione</LostFindButtons>
         <LostFindButtons>Znalezione</LostFindButtons>
+        <LostFindButtons>Oddam</LostFindButtons>
+        <LostFindButtons>Szukam</LostFindButtons>
       </div>
     </>
   );

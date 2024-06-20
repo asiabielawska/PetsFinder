@@ -11,7 +11,7 @@ const initialState: { posts: PostType[] } = {
     {
       img: `${spresiu}`,
       details: {
-        animal: "Kot",
+        animal: "Kotek",
         age: "2 lata",
         gender: "On",
         color: "Czarny",
@@ -29,7 +29,7 @@ const initialState: { posts: PostType[] } = {
     {
       img: `${lili}`,
       details: {
-        animal: "Pies",
+        animal: "Piesek",
         age: "3 miesiące",
         gender: "Ona",
         color: "Bezowy",
@@ -46,7 +46,7 @@ const initialState: { posts: PostType[] } = {
     {
       img: `${mila}`,
       details: {
-        animal: "Pies",
+        animal: "Piesek",
         age: "3 lata",
         gender: "Ona",
         color: "Brązowo-biały",
@@ -63,7 +63,7 @@ const initialState: { posts: PostType[] } = {
     {
       img: `${burasek}`,
       details: {
-        animal: "Kot",
+        animal: "Kotek",
         age: "Pół roku",
         gender: "On",
         color: "Bury",

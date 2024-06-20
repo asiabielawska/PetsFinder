@@ -8,12 +8,19 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectDescendingPosts } from "../../../Slices/postsState/postsState";
 
-export const LatestAnnouncements = () => {
+type Props = {
+  filterValue: string;
+};
+
+export const LatestAnnouncements = ({ filterValue }: Props) => {
   const navigate = useNavigate();
   const posts = useSelector(selectDescendingPosts);
+  const filteredPosts = posts.filter(
+    (post) => post.details.animal === filterValue || filterValue === ""
+  );
   return (
     <>
-      {posts.map((post) => (
+      {filteredPosts.map((post) => (
         <Announcement
           onClick={() => navigate(`/pet-profile?postId=${post.id}`)}
           key={post.id}
