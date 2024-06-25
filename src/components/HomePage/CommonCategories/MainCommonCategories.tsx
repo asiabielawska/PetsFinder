@@ -2,7 +2,7 @@ import {
   Category,
   CategoryButton,
   CommonCategories,
-  LostFindButtons,
+  RectangularButtons,
 } from "./styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCat } from "@fortawesome/free-solid-svg-icons";
@@ -43,10 +43,26 @@ export const MainCommonCategories = ({ setFilter }: Props) => {
         </Category>
       </CommonCategories>
       <div style={{ paddingTop: 10 }}>
-        <LostFindButtons>Zgubione</LostFindButtons>
-        <LostFindButtons>Znalezione</LostFindButtons>
-        <LostFindButtons>Oddam</LostFindButtons>
-        <LostFindButtons>Szukam</LostFindButtons>
+        <RectangularButtons onClick={() => setFilter("Zgubiono")}>
+          Zgubione
+        </RectangularButtons>
+        <RectangularButtons onClick={() => setFilter("Znaleziono")}>
+          Znalezione
+        </RectangularButtons>
+        <RectangularButtons onClick={() => setFilter("Oddam")}>
+          Oddam
+        </RectangularButtons>
+        <RectangularButtons onClick={() => setFilter("Szukam")}>
+          Szukam
+        </RectangularButtons>
+      </div>
+      <div style={{ paddingTop: 10 }}>
+        <RectangularButtons>Czarny</RectangularButtons>
+        <RectangularButtons>Biały</RectangularButtons>
+        <RectangularButtons>Bury</RectangularButtons>
+        <RectangularButtons>Rudy</RectangularButtons>
+        <RectangularButtons>Kolorowy</RectangularButtons>
+        <RectangularButtons>Inny</RectangularButtons>
       </div>
     </>
   );
