@@ -2,7 +2,7 @@ import {
   Category,
   CategoryButton,
   CommonCategories,
-  LostFindButtons,
+  RectangularButtons,
 } from "./styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCat } from "@fortawesome/free-solid-svg-icons";
@@ -10,37 +10,59 @@ import { faDog } from "@fortawesome/free-solid-svg-icons";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
-export const MainCommonCategories = () => {
+type Props = {
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const MainCommonCategories = ({ setFilter }: Props) => {
   return (
     <>
       <CommonCategories>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("Kotek")}>
             <FontAwesomeIcon icon={faCat} />
           </CategoryButton>
           <div>Kotki</div>
         </Category>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("Piesek")}>
             <FontAwesomeIcon icon={faDog} />
           </CategoryButton>
           <div>Pieski</div>
         </Category>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("Inne")}>
             <FontAwesomeIcon icon={faPaw} />
           </CategoryButton>
           <div>Inne</div>
         </Category>
         <Category>
-          <CategoryButton>
+          <CategoryButton onClick={() => setFilter("")}>
             <FontAwesomeIcon icon={faBan} />
           </CategoryButton>
         </Category>
       </CommonCategories>
       <div style={{ paddingTop: 10 }}>
-        <LostFindButtons>Zgubione</LostFindButtons>
-        <LostFindButtons>Znalezione</LostFindButtons>
+        <RectangularButtons onClick={() => setFilter("Zgubiono")}>
+          Zgubione
+        </RectangularButtons>
+        <RectangularButtons onClick={() => setFilter("Znaleziono")}>
+          Znalezione
+        </RectangularButtons>
+        <RectangularButtons onClick={() => setFilter("Oddam")}>
+          Oddam
+        </RectangularButtons>
+        <RectangularButtons onClick={() => setFilter("Szukam")}>
+          Szukam
+        </RectangularButtons>
+      </div>
+      <div style={{ paddingTop: 10 }}>
+        <RectangularButtons>Czarny</RectangularButtons>
+        <RectangularButtons>Biały</RectangularButtons>
+        <RectangularButtons>Bury</RectangularButtons>
+        <RectangularButtons>Rudy</RectangularButtons>
+        <RectangularButtons>Kolorowy</RectangularButtons>
+        <RectangularButtons>Inny</RectangularButtons>
       </div>
     </>
   );

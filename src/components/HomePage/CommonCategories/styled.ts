@@ -26,7 +26,7 @@ export const CategoryButton = styled("button")((props) => ({
   fontSize: 25,
 }));
 
-export const LostFindButtons = styled("button")((props) => ({
+export const RectangularButtons = styled("button")((props) => ({
   border: "none",
   backgroundColor: props.theme.palette.secondary.main,
   height: 30,
