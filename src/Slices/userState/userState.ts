@@ -1,29 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import dayjs from "dayjs";
 
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    isLoggedIn: false,
-    userId: 0,
+    userId: "",
     userName: "",
   },
   reducers: {
     loginUser: (state, action) => {
-      state.isLoggedIn = true;
-      state.userName = action.payload;
-      state.userId = dayjs().valueOf();
+      const { userName, id } = action.payload;
+      state.userName = userName;
+      state.userId = id;
     },
     logOutUser: (state) => {
-      state.isLoggedIn = false;
       state.userName = "";
-      state.userId = 0;
+      state.userId = "";
     },
   },
 });
-
-export const selectUser = (state: { user: { isLoggedIn: boolean } }) =>
-  state.user.isLoggedIn;
 
 export const selectUserName = (state: { user: { userName: string } }) =>
   state.user.userName;

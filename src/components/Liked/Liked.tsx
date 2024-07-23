@@ -8,20 +8,14 @@ import {
 import { Heading } from "../../styled";
 import { PhotoAndUserName } from "../common/PhotoAndUserName/PhotoAndUserName";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../Slices/userState/userState";
-import { useEffect } from "react";
 import { selectLikedPosts } from "../../Slices/postsState/postsState";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Liked = () => {
   const navigate = useNavigate();
-  const userLogged = useSelector(selectUser);
+  useAuth();
   const likedPosts = useSelector(selectLikedPosts);
 
-  useEffect(() => {
-    if (userLogged === false) {
-      navigate("/login-page");
-    }
-  }, []);
   return (
     <>
       <PhotoAndUserName />

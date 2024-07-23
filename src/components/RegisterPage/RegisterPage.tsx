@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../Slices/userState/userState";
 import { useForm } from "react-hook-form";
+import { client } from "../../supabase";
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
@@ -21,27 +22,42 @@ export const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
+    setError,
   } = useForm<{
     password: string;
     email: string;
     repeatPassword: string;
     userName: string;
   }>();
-  const userName = watch("userName");
+  const onRegister = handleSubmit(async (data) => {
+    try {
+      const result = await client.auth.signUp({
+        email: data.email,
+        password: data.password,
+      });
 
+      if (result.error != null) {
+        setError("root", { message: "Nie udało się zarejestrować" });
+        return;
+      }
+      dispatch(
+        loginUser({
+          userName: result.data.user?.email,
+          id: result.data.user?.id,
+        })
+      ); // @TODO handle user name as well
+      navigate("/");
+    } catch (_e) {
+      setError("root", { message: "Nie udało się zarejestrować" });
+    }
+  });
   return (
     <MainContent>
       <LoginHeading>Zarejestruj się</LoginHeading>
       <IconContainer>
         <Icon icon={faPaw}></Icon>
       </IconContainer>
-      <form
-        onSubmit={handleSubmit(() => {
-          dispatch(loginUser(userName));
-          navigate("/");
-        })}
-      >
+      <form onSubmit={onRegister}>
         <Input
           {...register("email", { required: "To pole jest wymagane" })}
           label="Email"
@@ -86,9 +102,10 @@ export const RegisterPage = () => {
           label="Nazwa użytkownika"
           variant="outlined"
         />
+        {errors.root?.message && <TextError>{errors.root?.message}</TextError>}
         <DarkButton type="submit">Zarejestruj się</DarkButton>
         <LightButton onClick={() => navigate("/")}>
-          Kontunuuj bez rejestracji
+          Kontynuuj bez rejestracji
         </LightButton>
       </form>
     </MainContent>

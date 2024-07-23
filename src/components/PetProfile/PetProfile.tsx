@@ -23,13 +23,12 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, selectPost } from "../../Slices/postsState/postsState";
 import dayjs from "dayjs";
-import { selectUser } from "../../Slices/userState/userState";
+import { selectUserId } from "../../Slices/userState/userState";
 
 export const PetProfile = () => {
-  const userLogged = useSelector(selectUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginUser = useSelector(selectUser);
+  const userId = useSelector(selectUserId);
   const posts = useSelector(selectPost);
   const [searchParams] = useSearchParams();
   const postId = searchParams.get("postId");
@@ -46,7 +45,7 @@ export const PetProfile = () => {
       <ReturnButton onClick={() => navigate("/")}>
         <ArrowBackIcon />
       </ReturnButton>
-      {loginUser && (
+      {userId && (
         <Liked
           onClick={() => dispatch(likePost(post.id))}
           isPetLiked={post.isLiked}
@@ -88,11 +87,7 @@ export const PetProfile = () => {
       <Contact>
         <Adopt
           onClick={() => {
-            if (userLogged === false) {
-              navigate("/login-page");
-            } else {
-              navigate("/message");
-            }
+            navigate("/message");
           }}
         >
           Napisz wiadomość
