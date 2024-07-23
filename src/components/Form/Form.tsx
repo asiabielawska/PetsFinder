@@ -10,14 +10,10 @@ import {
   WhiteBackgroundButton,
 } from "./styled";
 import { BasicDatePicker } from "./DatePicker/BasicDatePicker";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { mockForm } from "./constants";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectUser,
-  selectUserId,
-  selectUserName,
-} from "../../Slices/userState/userState";
+import { selectUserId, selectUserName } from "../../Slices/userState/userState";
 import {
   addNewAnnoucement,
   editAnnoucement,
@@ -27,6 +23,7 @@ import { PostType, PostsTypes } from "../../types/post";
 import dayjs from "dayjs";
 import { useForm } from "react-hook-form";
 import { BasicSelect } from "../BasicSelect/BasicSelect";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Form = () => {
   const [searchParams] = useSearchParams();
@@ -40,7 +37,6 @@ export const Form = () => {
   const userId = useSelector(selectUserId);
   const navigate = useNavigate();
   const ref = useRef<HTMLInputElement | null>(null);
-  const userLogged = useSelector(selectUser);
   const dispatch = useDispatch();
   const isEdit = post !== undefined;
 
@@ -64,11 +60,7 @@ export const Form = () => {
     },
   });
 
-  useEffect(() => {
-    if (userLogged === false) {
-      navigate("/login-page");
-    }
-  }, []);
+  useAuth();
 
   return (
     <>

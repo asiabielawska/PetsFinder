@@ -11,22 +11,38 @@ import {
   Input,
   LightButton,
   LoginHeading,
+  TextError,
 } from "../styled";
-
-const mockUser = {
-  login: "Asia",
-  password: "Admin!123",
-};
+import { client } from "../../supabase";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState<string | undefined>(undefined);
   const [password, setPassword] = useState<string | undefined>(undefined);
-  const login = () => {
-    if (email === mockUser.login && password === mockUser.password) {
-      dispatch(loginUser(mockUser.login));
-      navigate("/");
+  const [error, setError] = useState<string | undefined>();
+
+  const login = async () => {
+    if (email && password) {
+      try {
+        const result = await client.auth.signInWithPassword({
+          email,
+          password,
+        });
+        if (result.error) {
+          setError("Nieprawidłowy email lub hasło");
+        } else {
+          dispatch(
+            loginUser({
+              userName: result.data.user.email,
+              id: result.data.user.id,
+            })
+          );
+          navigate("/");
+        }
+      } catch (_e) {
+        setError("Nieprawidłowy email lub hasło");
+      }
     }
   };
   return (
@@ -47,11 +63,12 @@ export const LoginPage = () => {
         onChange={(event) => setPassword(event.target.value)}
       />
       <DarkButton onClick={login}>Zaloguj się</DarkButton>
+      {error && <TextError>{error}</TextError>}
       <LightButton onClick={() => navigate("/register-page")}>
         Zarejestruj się
       </LightButton>
       <LightButton onClick={() => navigate("/")}>
-        Kontunuuj bez logowania
+        Kontynuuj bez logowania
       </LightButton>
     </MainContent>
   );

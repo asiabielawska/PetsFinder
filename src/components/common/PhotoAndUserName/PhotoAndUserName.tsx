@@ -6,6 +6,7 @@ import { selectUserName } from "../../../Slices/userState/userState";
 export const PhotoAndUserName = () => {
   const navigate = useNavigate();
   const userName = useSelector(selectUserName);
+  if (!userName) return null;
   return (
     <>
       <PhotoAndName>
